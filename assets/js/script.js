@@ -18,6 +18,7 @@ function displayPokemonNames (data){
     PokemonDataArray = data.results;
     for(i = 0; i < PokemonDataArray.length; i ++){
         PokemonNames = data.results[i].name;
+        
         showPokemonInfo(PokemonNames);
     };
 };
@@ -33,7 +34,8 @@ function showPokemonInfo (pokemonName) {
             return response.json();
         })
         .then(function (data){
-            console.log(data)
+            console.log(data);
+            displaySearchedPokemon(data)
         })
         };
 
@@ -45,4 +47,27 @@ getAll151FetchCall(20);
 
 
 
-    
+ const searchBtn = document.querySelector('#search-btn')
+ searchBtn.addEventListener('click', searchPokemon)   
+function searchPokemon (event) {
+    event.preventDefault()
+    const searchValue = document.querySelector('.form-control').value
+    showPokemonInfo(searchValue) 
+    console.log(searchValue)
+}
+function displaySearchedPokemon (info) {
+    console.log(info)
+    const pokemonOutput = document.querySelector("#fetched-pokemon")
+    const card = `
+    <div>
+    <img src=${info.sprites.front_default} alt=${info.name}/>
+    <div>
+    <div>
+    <div>HP: ${info.stats[0].base_stat}</div>
+    </div>
+    </div>
+    </div>
+    `
+
+    pokemonOutput.innerHTML = card
+}

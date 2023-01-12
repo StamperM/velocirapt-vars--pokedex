@@ -18,6 +18,7 @@ function displayPokemonNames (data){
     PokemonDataArray = data.results;
     for(i = 0; i < PokemonDataArray.length; i ++){
         PokemonNames = data.results[i].name;
+        
         showPokemonInfo(PokemonNames);
     };
 };

@@ -111,6 +111,7 @@ function showSinglePokemonInfo (pokemonName) {
             
         })
         };
+//
 function displaySearchedPokemon (info) {
     console.log(info)
     const pokemonOutput = document.querySelector("#fetched-pokemon")

@@ -1,6 +1,7 @@
 // main fetch function that gets the name of all 151 pokemon only
+let offset = 0
 function getAll151FetchCall(limit){
-    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}`
+    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     // fetch call
     fetch(pokeApiCallTemplate)
         .then(function (response){
@@ -11,6 +12,8 @@ function getAll151FetchCall(limit){
         displayPokemonNames(data);
         })
         };
+
+
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them 
 // into the showPokemon info function
@@ -38,7 +41,10 @@ function showPokemonInfo (pokemonName) {
         .then(function (data){
             console.log(data);
             
-        
+            let pokemonArray = []
+            pokemonArray.push(data)
+            console.log(pokemonArray)
+            displayList(pokemonArray)
             
              
         })
@@ -49,7 +55,26 @@ function showPokemonInfo (pokemonName) {
 getAll151FetchCall(20);
 
 
-
+function displayList (items) {
+   const listOutput = document.querySelector('.list-output')
+   const card = `
+    <div class="wrapper">
+        <img class="w-25" src=${items[0].sprites.front_default} alt=${items[0].name}/>
+        <div class="info-wrapper">
+            <h1>${items[0].name}</h1>
+            <div class="stats-wrapper">
+                <div class="hp-div">HP: ${items[0].stats[0].base_stat}</div>
+                <div class="attack-div">Attack: ${items[0].stats[1].base_stat}</div>
+                <div class="defense-div">Defense: ${items[0].stats[2].base_stat}</div>
+                <div class="specialatk-div">Special-Attack: ${items[0].stats[3].base_stat}</div>
+                <div class="specialdef-div">Special-Defense: ${items[0].stats[4].base_stat}</div>
+                <div class="speed-div">speed: ${items[0].stats[5].base_stat}</div>
+            </div>
+        </div>
+    </div>
+    `
+   listOutput.innerHTML += card
+}
 
 
  const searchBtn = document.querySelector('#search-btn')

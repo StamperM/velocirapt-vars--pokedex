@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -12,21 +12,23 @@
         integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-light bg-light">
           <button type="button" id = "left-arrow" class="btn btn-info">Left arrow</button>
           <button type="button" id = "right-arrow" class="btn btn-info">Right arrow</button>
             <div class="container-fluid">
-              <a class="navbar-brand">Battle Teams</a>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+                <a class="navbar-brand">Battle Teams</a>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
-          </nav>
+        </nav>
     </header>
 <main>
+   <!-- will use search and diplay pokemon that was searched for -->
     <section class="searched-output-section " >
         <section class="searched-output-section d-flex flex-column align-items-center justify-content-center mt-5 mb-5" >
             <h2>Search for Pokemon</h2>
@@ -34,72 +36,104 @@
                 ?
             </div>
             
-        </section>
-        <section class="list-output ">
-        </section>
-        <div class="container pokemon-list section container">
-            <div class="row-2 custom-direction">
-                <div class="col-row"> <div class="card h-100">
-                    <img src="#" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Character Name Here </h5>
-                      <p class="card-text"></p>
-                      <input class="btn btn-primary" type="reset" value="Remove">
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted">Fighting Type Here</small>
-                    </div>
-                </div>
-                <div>
-                     <div class="card h-100">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Character Name Here </h5>
-                      <p class="card-text"></p>
-                      <input class="btn btn-primary" type="reset" value="Remove">
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted">Fighting Type Here</small>
-                    </div>
-                </div>
-                <div class="row custom-direction">
-                <div>
-                <div class="col-row">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Character Name Here </h5>
-                          <p class="card-text"></p>
-                          <input class="btn btn-primary" type="reset" value="Remove">
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Fighting Type Here</small>
-                        </div>
-                    </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Character Name Here </h5>
-                          <p class="card-text"></p>
-                          <input class="btn btn-primary" type="reset" value="Remove">
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Fighting Type Here</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-              </div>
-            </div>
-        </section>
-</main>
-  test
-    
+          </section>
+           <!-- will pull js to populate grid of all pokemon -->
+    <section class="list-output ">
 
-    
+   </section>
+    </section>
+        <section class="container pokemon-list section justify-content-evenly">
+
+            <div class="container">
+                <div class="row row-cols-auto justify-content-evenly">
+                  <div class="col d-flex">   
+                    <div class="card row" style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div>
+                  <div class="d-flex col">   
+                    <div class="card row" style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div>
+                  <div class="d-flex col">   
+                    <div class="card row" style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div>
+                  <div class="col"><div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-sm">
+                   </div></div>
+                </div>
+              </div>
+              <!-- bottom Row -->
+              <div class="container">
+                <div class="row row-cols-auto justify-content-evenly">
+                  <div class="col"> <div class="d-flex col">   
+                    <div class="card row d-flex " style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div>
+            </div>
+                  <div class="col"> <div class="d-flex col">   
+                    <div class="card row" style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div>
+            </div>
+                  <div class="col"> <div class="d-flex col">   
+                    <div class="card row" style="width: 15rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body align-self-stretch">
+                        <input class="btn btn-primary btn-sm" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div></div></div>
+                  <div class="col"><div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Opponet</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                     aria-describedby="inputGroup-sizing-sm">
+                    </div></div>
+                </div>
+              </div>
+      </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
 
 

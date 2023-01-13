@@ -46,8 +46,10 @@ function showPokemonInfo (pokemonName) {
             pokemonArray.push(data)
             console.log(pokemonArray)
             displayList(pokemonArray)
+           
+                useFilter(pokemonArray)
             
-            useFilter(pokemonArray)
+            
             
            
              

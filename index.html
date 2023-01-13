@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
         integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-
+  
 <body>
     <header>
         <nav class="navbar navbar-light bg-light">
@@ -26,77 +27,82 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="searched-output-section">
-            <section class="searched-output-section">
-                <div id="fetched-pokemon">
-                    ?
+<main>
+    <section class="searched-output-section " >
+        <section class="searched-output-section d-flex flex-column align-items-center justify-content-center mt-5 mb-5" >
+            <h2>Search for Pokemon</h2>
+            <div id="fetched-pokemon" class="border w-25 d-flex justify-content-center p-3">
+                ?
+            </div>
+            
+        </section>
+        <section class="list-output ">
+
+        </section>
+        <div class="container pokemon-list section container">
+            <div class="row-2 custom-direction">
+                <div class="col-row"> <div class="card h-100">
+                    <img src="#" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Character Name Here </h5>
+                      <p class="card-text"></p>
+                      <input class="btn btn-primary" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">Fighting Type Here</small>
+                    </div>
                 </div>
-
-            </section>
-            <div class="container pokemon-list section container">
-                <div class="row-2 custom-direction">
-                    <div class="col-row">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Character Name Here </h5>
-                                <p class="card-text"></p>
-                                <input class="btn btn-primary" type="reset" value="Remove">
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Fighting Type Here</small>
-                            </div>
+                <div>
+                     <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Character Name Here </h5>
+                      <p class="card-text"></p>
+                      <input class="btn btn-primary" type="reset" value="Remove">
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">Fighting Type Here</small>
+                    </div>
+                </div>
+                <div class="row custom-direction">
+                <div>
+                <div class="col-row">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Character Name Here </h5>
+                          <p class="card-text"></p>
+                          <input class="btn btn-primary" type="reset" value="Remove">
                         </div>
-                        <div>
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Character Name Here </h5>
-                                    <p class="card-text"></p>
-                                    <input class="btn btn-primary" type="reset" value="Remove">
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Fighting Type Here</small>
-                                </div>
-                            </div>
-                            <div class="row custom-direction">
-                                <div>
-                                    <div class="col-row">
-                                        <div class="card h-100">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Character Name Here </h5>
-                                                <p class="card-text"></p>
-                                                <input class="btn btn-primary" type="reset" value="Remove">
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-muted">Fighting Type Here</small>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                                <img src="..." class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Character Name Here </h5>
-                                                    <p class="card-text"></p>
-                                                    <input class="btn btn-primary" type="reset" value="Remove">
-                                                </div>
-                                                <div class="card-footer">
-                                                    <small class="text-muted">Fighting Type Here</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    </main>
-    </main>
-    test
-
+                        <div class="card-footer">
+                          <small class="text-muted">Fighting Type Here</small>
+                        </div>
+                    </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Character Name Here </h5>
+                          <p class="card-text"></p>
+                          <input class="btn btn-primary" type="reset" value="Remove">
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Fighting Type Here</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </div>
+            </div>
+        </section>
+</main>
+  test
+    
 
 
     <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
+
+

@@ -16,10 +16,12 @@ function getAll151FetchCall(limit){
 // into the showPokemon info function
 function displayPokemonNames (data){
     PokemonDataArray = data.results;
+    
     for(i = 0; i < PokemonDataArray.length; i ++){
         PokemonNames = data.results[i].name;
         
         showPokemonInfo(PokemonNames);
+       
     };
 };
 
@@ -35,7 +37,10 @@ function showPokemonInfo (pokemonName) {
         })
         .then(function (data){
             console.log(data);
-            displaySearchedPokemon(data)
+            
+        
+            
+             
         })
         };
 
@@ -52,20 +57,52 @@ getAll151FetchCall(20);
 function searchPokemon (event) {
     event.preventDefault()
     const searchValue = document.querySelector('.form-control').value
-    showPokemonInfo(searchValue) 
+    showSinglePokemonInfo(searchValue) 
     console.log(searchValue)
 }
+function showSinglePokemonInfo (pokemonName) {
+    // template that will plug in the parameter pokemon name
+    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    // fetch call 
+    fetch(pokeApiCallTemplate)
+        .then(function (response){
+            if (response.status == 404) {
+                document.querySelector("#fetched-pokemon").innerHTML = "pokemon not found" 
+            } else {
+                return response.json();
+            }
+            
+        })
+        .then(function (data){
+            console.log(data);
+        
+             if (data.id < 151) {
+                displaySearchedPokemon(data)
+            } else {
+                document.querySelector("#fetched-pokemon").innerHTML = "pokemon not found"
+            }
+            
+           
+            
+        })
+        };
 function displaySearchedPokemon (info) {
     console.log(info)
     const pokemonOutput = document.querySelector("#fetched-pokemon")
     const card = `
-    <div>
-    <img src=${info.sprites.front_default} alt=${info.name}/>
-    <div>
-    <div>
-    <div>HP: ${info.stats[0].base_stat}</div>
-    </div>
-    </div>
+    <div class="wrapper">
+        <img class="w-100" src=${info.sprites.front_default} alt=${info.name}/>
+        <div class="info-wrapper">
+            <h1>${info.name}</h1>
+            <div class="stats-wrapper">
+                <div class="hp-div">HP: ${info.stats[0].base_stat}</div>
+                <div class="attack-div">Attack: ${info.stats[1].base_stat}</div>
+                <div class="defense-div">Defense: ${info.stats[2].base_stat}</div>
+                <div class="specialatk-div">Special-Attack: ${info.stats[3].base_stat}</div>
+                <div class="specialdef-div">Special-Defense: ${info.stats[4].base_stat}</div>
+                <div class="speed-div">speed: ${info.stats[5].base_stat}</div>
+            </div>
+        </div>
     </div>
     `
 

@@ -101,7 +101,7 @@ function showSinglePokemonInfo (pokemonName) {
         .then(function (data){
             console.log(data);
         
-             if (data.id < 151) {
+             if (data.id < 152) {
                 displaySearchedPokemon(data)
             } else {
                 document.querySelector("#fetched-pokemon").innerHTML = "pokemon not found"

@@ -1,3 +1,4 @@
+
 .list-output{
     width: 100%;
     display: grid;
@@ -27,3 +28,31 @@
 
 
 } */
+
+*{
+    margin: 0;
+}
+
+.custom-direction{
+    display: flex;
+    /* flex-direction: column; */
+}
+.custom-column2{
+    flex-direction: row;
+    background-color: green;
+}
+.custom-column1{
+    flex-direction: row;
+    background-color: blue;
+}
+
+.custom-column3{
+    flex-direction: row;
+    background-color: rgb(128, 0, 6);
+}
+
+button {
+  font-family: 'Paytone One', sans-serif;
+    ;
+}
+

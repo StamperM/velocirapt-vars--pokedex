@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
 }
@@ -18,4 +19,11 @@
 .custom-column3{
     flex-direction: row;
     background-color: rgb(128, 0, 6);
+=======
+.row {
+  
+}
+.col {
+    
+>>>>>>> c03ce2a20aa9d8073030166fde268ee7474d70e9
 }

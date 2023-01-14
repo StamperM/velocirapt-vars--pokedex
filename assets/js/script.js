@@ -1,4 +1,5 @@
 // main fetch function that gets the name of all 151 pokemon only
+
 let offset = 0
 function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
@@ -13,8 +14,10 @@ function getAll151FetchCall(limit){
         })
         };
 
-        // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them 
+
+// loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
+
 function displayPokemonNames (data){
     pokemonDataArray = data.results;
     syncedUpDataArray = [];
@@ -67,7 +70,9 @@ function showPokemonInfo (pokemonName) {
 
 
  
+
 // display the list of pokemon that was fetched along with their stats
+
 function displayList (items) {
     let listOutput = document.querySelector('.list-output')
     console.log(items);
@@ -77,20 +82,17 @@ function displayList (items) {
     
     const card = `
      <div id=${items[0].types[0].type.name} class="wrapper list-wrapper">
+
          
          <div class="info-wrapper">
              <h1>${items[0].name}</h1>
              <div class="stats-wrapper">
-             <img class="w-25" src=${items[0].sprites.front_default} alt=${items[0].name}/>
-                 <div class="hp-div">HP: ${items[0].stats[0].base_stat}</div>
-                 <div class="attack-div">Attack: ${items[0].stats[1].base_stat}</div>
-                 <div class="defense-div">Defense: ${items[0].stats[2].base_stat}</div>
-                 <div class="specialatk-div">Special-Attack: ${items[0].stats[3].base_stat}</div>
-                 <div class="specialdef-div">Special-Defense: ${items[0].stats[4].base_stat}</div>
-                 <div class="speed-div">speed: ${items[0].stats[5].base_stat}</div>
+             <img class="w-100" src=${items[0].sprites.front_default} alt=${items[0].name}/>
+                 <a href="#" class="add-btn btn btn-primary">Add</a>
              </div>
          </div>
      </div>
+
      `
     listOutput.innerHTML += card 
     
@@ -98,6 +100,7 @@ function displayList (items) {
     };
     
      
+
 
 
 function useFilter (info) {
@@ -147,35 +150,38 @@ function searchPokemon (event) {
     const searchValue = document.querySelector('.form-control').value
     showSinglePokemonInfo(searchValue) 
     // console.log(searchValue)
+
 }
 // setting up the show single pokemon info
-function showSinglePokemonInfo (pokemonName) {
-    // template that will plug in the parameter pokemon name
-    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-    // fetch call 
-    fetch(pokeApiCallTemplate)
-        .then(function (response){
-            if (response.status == 404) {
-                document.querySelector("#fetched-pokemon").innerHTML = "pokemon not found"; 
-            } else {
-                return response.json();
-            }
-        })
-        .then(function (data){
-            // console.log(data);
-            // if statement making sure that the pokemon searched for is within the original 151
-             if (data.id < 152) {
-                displaySearchedPokemon(data);
-            } else {
-                document.querySelector("#fetched-pokemon").innerHTML = "pokemon not found";
-            }
-        });
-        };
-//function setting up the display searched pokemon 
-function displaySearchedPokemon (info) {
-    // console.log(info)
-    const pokemonOutput = document.querySelector("#fetched-pokemon");
-    const card = `
+function showSinglePokemonInfo(pokemonName) {
+  // template that will plug in the parameter pokemon name
+  var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+  // fetch call
+  fetch(pokeApiCallTemplate)
+    .then(function (response) {
+      if (response.status == 404) {
+        document.querySelector("#fetched-pokemon").innerHTML =
+          "pokemon not found";
+      } else {
+        return response.json();
+      }
+    })
+    .then(function (data) {
+      // console.log(data);
+      // if statement making sure that the pokemon searched for is within the original 151
+      if (data.id < 152) {
+        displaySearchedPokemon(data);
+      } else {
+        document.querySelector("#fetched-pokemon").innerHTML =
+          "pokemon not found";
+      }
+    });
+}
+//function setting up the display searched pokemon
+function displaySearchedPokemon(info) {
+  // console.log(info)
+  const pokemonOutput = document.querySelector("#fetched-pokemon");
+  const card = `
     <div class="wrapper">
         <img class="w-100" src=${info.sprites.front_default} alt=${info.name}/>
         <div class="info-wrapper">
@@ -190,38 +196,39 @@ function displaySearchedPokemon (info) {
             </div>
         </div>
     </div>
-    `
+    `;
 
-    pokemonOutput.innerHTML = card;
-};
+  pokemonOutput.innerHTML = card;
+}
 
 // pulling the values for the left and right buttons
 let leftArrow = document.querySelector("#left-arrow");
 let rightArrow = document.querySelector("#right-arrow");
 // adding the function for leftPagination
-function rightPagination(){
-    offset += 20; 
-    var emptyDisplayList = [];
-    displayList(emptyDisplayList);
-    getAll151FetchCall(20);
-    
-    
+function rightPagination() {
+  offset += 20;
+  var emptyDisplayList = [];
+  displayList(emptyDisplayList);
+  getAll151FetchCall(20);
 }
 
-function leftPagination(){
-    if (offset == 0 || offset == 131 ){
-        return;
-    } else {
+function leftPagination() {
+  if (offset == 0 || offset == 131) {
+    return;
+  } else {
     offset -= 20;
     var emptyDisplayList = [];
     displayList(emptyDisplayList);
     getAll151FetchCall(20);
     console.log(offset);
-    };
-};
+  }
+}
 // adding event listeners to the buttons
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
+
+// on starting of the page, place in 20 pokemon to the call.
+getAll151FetchCall(20);
 
 
 
@@ -229,3 +236,4 @@ rightArrow.addEventListener("click", rightPagination);
 
  // on starting of the page, place in 20 pokemon to the call. 
  getAll151FetchCall(20)
+

@@ -10,7 +10,6 @@ function getAll151FetchCall(limit){
         .then(function (data){
         // plug in to display pokemon names with the data
         displayPokemonNames(data);
-        // console.log(data);
         })
         };
 
@@ -27,6 +26,7 @@ function displayPokemonNames (data){
         // console.log(syncedUpDataArray);
        
     };
+    console.log(syncedUpDataArray)
     showPokemonInfo(syncedUpDataArray);
 };
 
@@ -39,22 +39,33 @@ function showPokemonInfo (pokemonName) {
         // console.log(pokemonName[i]);
         var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`
     // fetch call 
-        fetch(pokeApiCallTemplate)
-            .then(function (response){
-                return response.json();
-            })
-            .then(function (data){
-                // console.log(data);
-                
-                let pokemonArray = []
-                pokemonArray.push(data)
-                // console.log(pokemonArray)
-                displayList(pokemonArray);
-                return(pokemonArray);
-            });
-    };
-        
-};
+    fetch(pokeApiCallTemplate)
+        .then(function (response){
+            return response.json();
+        })
+        .then(function (data){
+            console.log(data);
+            
+            let pokemonArray = []
+            pokemonArray.push(data)
+            console.log(pokemonArray)
+            displayList(pokemonArray)
+           
+            useFilter(pokemonArray)
+           
+            
+            
+            
+            return(pokemonArray);
+           
+             
+        })
+        };
+    }
+
+
+
+
  
 // display the list of pokemon that was fetched along with their stats
 function displayList (items) {
@@ -87,11 +98,68 @@ function displayList (items) {
     
      
 
-// setting up the query selector for the search button, when clicked, exectute the function searchPokemon;
-const searchBtn = document.querySelector('#search-btn');
- searchBtn.addEventListener('click', searchPokemon);
-//setting up the search pokemon function, preventing default, getting the value from form control,
-// and calling for the show single pokemon info function
+
+function useFilter (info) {
+const radio = document.querySelectorAll('.input-radio')
+
+radio.forEach((each, key) => {
+    const value = each.value
+    const types = info[0].types[0].type.name
+    console.log(value + "=" + types)
+              
+    each.addEventListener("click", () => {
+        
+        filteredData(value,types,info)
+            
+        })
+        
+        
+    })
+}
+function filteredData (value, types, info) {
+    const wrapper = document.querySelectorAll('.list-wrapper')
+    if (value == types) {
+        console.log("the if works")
+        for (let i=0; i < wrapper.length; i++) {
+            wrapper[i].style.display = "block"
+        }
+        
+        // wrapper.forEach( wrap => {
+        //     wrap.style.display = "block"})
+      } else if (value != types) {
+        for (let i=0; i < wrapper.length; i++) {
+            wrapper[i].style.display = "none"
+        }
+        // wrapper.forEach( unwrap => {
+        //     unwrap.style.display = "none"})
+      }
+}
+
+// card for pokemon that are displayed on page load
+function displayList (items) {
+   const listOutput = document.querySelector('.list-output')
+   const card = `
+    <div id=${items[0].name} class="list-wrapper">
+        <img class="w-25" src=${items[0].sprites.front_default} alt=${items[0].name}/>
+        <div class="info-wrapper">
+            <h1>${items[0].name}</h1>
+            <div class="stats-wrapper">
+                <div class="hp-div">HP: ${items[0].stats[0].base_stat}</div>
+                <div class="attack-div">Attack: ${items[0].stats[1].base_stat}</div>
+                <div class="defense-div">Defense: ${items[0].stats[2].base_stat}</div>
+                <div class="specialatk-div">Special-Attack: ${items[0].stats[3].base_stat}</div>
+                <div class="specialdef-div">Special-Defense: ${items[0].stats[4].base_stat}</div>
+                <div class="speed-div">speed: ${items[0].stats[5].base_stat}</div>
+            </div>
+        </div>
+    </div>
+    `
+   listOutput.innerHTML += card
+}
+
+
+ const searchBtn = document.querySelector('#search-btn')
+ searchBtn.addEventListener('click', searchPokemon)   
 function searchPokemon (event) {
     event.preventDefault()
     const searchValue = document.querySelector('.form-control').value
@@ -178,4 +246,4 @@ rightArrow.addEventListener("click", rightPagination);
 
 
  // on starting of the page, place in 20 pokemon to the call. 
- getAll151FetchCall(20);
+ getAll151FetchCall(20)

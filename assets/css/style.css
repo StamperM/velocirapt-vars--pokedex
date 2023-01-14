@@ -1,6 +1,29 @@
-.row {
-  
+.list-output{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    margin: 10px;
+    grid-gap: 10px 10px;
+    /* justify-content: center;
+    align-items: center; */
 }
-.col {
-    
+
+.add-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+
 }
+
+/* .stats{
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+
+} */

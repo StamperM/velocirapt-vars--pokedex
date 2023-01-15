@@ -51,4 +51,22 @@ button {
   font-family: 'Paytone One', sans-serif;
     ;
 }
+#pokemon-name{
+    position: absolute;
+  font-family: Montserrat;
+  font-weight: 900;
+  font-size: 4vmax;
+  
+}
+
+#pokemon-img{
+    position: relative;
+    z-index: 100;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    
+    
+    
+}
+
 

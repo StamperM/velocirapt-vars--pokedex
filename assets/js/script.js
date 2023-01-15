@@ -234,6 +234,5 @@ getAll151FetchCall(20);
 
 
 
- // on starting of the page, place in 20 pokemon to the call. 
- getAll151FetchCall(20)
+
 

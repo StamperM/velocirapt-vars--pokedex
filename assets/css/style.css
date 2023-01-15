@@ -7,35 +7,23 @@
     --pokeBorder:-webkit-text-stroke: 2px black;
 }
 
-.list-output{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    margin: 10px;
-    grid-gap: 10px 10px;
-    /* justify-content: center;
-    align-items: center; */
-}
-
 .add-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
+    background-color: var(--pokeRed);
+    color: var(--pokeYellow);
+    text-align: center;
+    font-size: 8px;
 
 }
 
-/* .stats{
-    position: absolute;
-    inset: 0;
+/* .info-wrapper h1{
+    display: flex;
     text-align: center;
-    display: block;
     justify-content: center;
-    align-items: center;
-
-
+    background-color: var(--pokeRed);
+    color: var(--pokeYellow);
+    border-radius: 10px;
 } */
+
 
 *{
     margin: 0;

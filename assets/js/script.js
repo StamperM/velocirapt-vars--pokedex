@@ -31,13 +31,13 @@ function displayPokemonNames (data){
 
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
-function showPokemonInfo (pokemonName) {
-    // console.log(pokemonName);
-    // template that will plug in the parameter pokemon name
-    for( var i = 0; i < pokemonName.length; i++){
-        // console.log(pokemonName[i]);
-        var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`
-    // fetch call 
+function showPokemonInfo(pokemonName) {
+  // console.log(pokemonName);
+  // template that will plug in the parameter pokemon name
+  for (var i = 0; i < pokemonName.length; i++) {
+    // console.log(pokemonName[i]);
+    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
+    // fetch call
     fetch(pokeApiCallTemplate)
         .then(function (response){
             return response.json();
@@ -52,36 +52,45 @@ function showPokemonInfo (pokemonName) {
   };
 
 // display the list of pokemon that was fetched along with their stats
-function displayList (items){
-    let listOutput = document.querySelector('.list-output')
-    
-    if (items.length == 0){
-        listOutput.innerHTML = " "
-    } else if (items[0].id > 151) {
-       var card = ` `;
-    } else{ card =
-      ` 
-      <div class="wrapper list-wrapper h25 ${items[0].types[0].type.name}">
-      <div class="info-wrapper">
-             <h1 id="pokemon-name">${items[0].name} </h1>
-             <div class="stats-wrapper h25">
-                <img id= "pokemon-img" class="w-75" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
-                <a href="#" class="add-btn btn btn-primary">Add</a>
+
+function displayList(items) {
+  let listOutput = document.querySelector(".list-output");
+  console.log(items);
+  if (items.length == 0) {
+    listOutput.innerHTML = " ";
+  } else if (items[0].id > 151) {
+    var card = ` `;
+  } else {
+    const card = `
+      <div class="container-fluid">
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
+          <div class="info-wrapper ">
+          <h1 id="pokemon-name">${items[0].name} </h1>
+              <div class="stats-wrapper h25">
+              <img id= "pokemon-img" class="w-100" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
               </div>
           </div>
-     </div>
-      `
+        </div>
+
+
+     `
     listOutput.innerHTML += card 
-    };
-  };
     
-//function to use filter when the dropdown menu is pulled down and something is selected.  
+ };
+    };
+    
+     
+
+
+
 function useFilter (info) {
-const dropDown = document.querySelectorAll('.dropdown-item');
+const dropDown = document.querySelectorAll('.dropdown-item')
 
 dropDown.forEach((each, key) => {
-    const value = each.getAttribute('id');
-    const types = info[0].types[0].type.name;
+    const value = each.getAttribute('id')
+    const types = info[0].types[0].type.name
+    console.log(value + "=" + types)
+              
     each.addEventListener("click", () => {
         filteredData(value,types,info);
       });
@@ -206,10 +215,5 @@ rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
-
-
-
-
-
 
 

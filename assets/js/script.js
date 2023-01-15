@@ -70,12 +70,20 @@ function displayList(items) {
               <img id= "pokemon-img" class="w-100" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
               </div>
           </div>
+            <div class="stats-wrapper">
+            <div class="hp-div">HP: ${info.stats[0].base_stat}</div>
+            <div class="attack-div">Attack: ${info.stats[1].base_stat}</div>
+            <div class="defense-div">Defense: ${info.stats[2].base_stat}</div>
+            <div class="specialatk-div">Special-Attack: ${info.stats[3].base_stat}</div>
+            <div class="specialdef-div">Special-Defense: ${info.stats[4].base_stat}</div>
+            <div class="speed-div">speed: ${info.stats[5].base_stat}</div>
+          </div>
         </div>
 
 
      `
     listOutput.innerHTML += card 
-    
+    displayCardOnHover();
  };
     };
     
@@ -209,11 +217,26 @@ function leftPagination() {
   }
 };
 
+
+function displayCardOnHover() {
+  console.log("it works")
+  var cardWrapper = document.querySelectorAll(".list-wrapper")
+  cardWrapper.forEach(element => { 
+    var createdDiv = document.createElement("div");
+     createdDiv.setAttribute("id","card-hover");
+    element.append(createdDiv);
+    
+  });
+}
+
+
+
 // adding event listeners to the buttons
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
+displayCardOnHover();
 
 

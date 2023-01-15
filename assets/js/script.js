@@ -1,156 +1,128 @@
 // main fetch function that gets the name of all 151 pokemon only
 
-let offset = 0
-function getAll151FetchCall(limit){
-    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
-    // fetch call
-    fetch(pokeApiCallTemplate)
-        .then(function (response){
-            return response.json();
-        })
-        .then(function (data){
-        // plug in to display pokemon names with the data
-        displayPokemonNames(data);
-        })
-        };
-
+let offset = 0;
+function getAll151FetchCall(limit) {
+  var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+  // fetch call
+  fetch(pokeApiCallTemplate)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // plug in to display pokemon names with the data
+      displayPokemonNames(data);
+    });
+}
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 
-function displayPokemonNames (data){
-    pokemonDataArray = data.results;
-    syncedUpDataArray = [];
-    // console.log(PokemonDataArray);
-    for( let i = 0; i < pokemonDataArray.length; i++){
-        PokemonNames = data.results[i].name;
-        // console.log(PokemonNames);
-        syncedUpDataArray.push(PokemonNames);
-        // console.log(syncedUpDataArray);
-       
-    };
-    console.log(syncedUpDataArray)
-    showPokemonInfo(syncedUpDataArray);
-};
+function displayPokemonNames(data) {
+  pokemonDataArray = data.results;
+  syncedUpDataArray = [];
+  // console.log(PokemonDataArray);
+  for (let i = 0; i < pokemonDataArray.length; i++) {
+    PokemonNames = data.results[i].name;
+    // console.log(PokemonNames);
+    syncedUpDataArray.push(PokemonNames);
+    // console.log(syncedUpDataArray);
+  }
+  console.log(syncedUpDataArray);
+  showPokemonInfo(syncedUpDataArray);
+}
 
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
-function showPokemonInfo (pokemonName) {
-    // console.log(pokemonName);
-    // template that will plug in the parameter pokemon name
-    for( var i = 0; i < pokemonName.length; i++){
-        // console.log(pokemonName[i]);
-        var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`
-    // fetch call 
+function showPokemonInfo(pokemonName) {
+  // console.log(pokemonName);
+  // template that will plug in the parameter pokemon name
+  for (var i = 0; i < pokemonName.length; i++) {
+    // console.log(pokemonName[i]);
+    var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
+    // fetch call
     fetch(pokeApiCallTemplate)
-        .then(function (response){
-            return response.json();
-        })
-        .then(function (data){
-            console.log(data);
-            
-            let pokemonArray = []
-            pokemonArray.push(data)
-            console.log(pokemonArray)
-            displayList(pokemonArray)
-           
-            useFilter(pokemonArray)
-           
-            
-            
-            
-            return(pokemonArray);
-           
-             
-        })
-        };
-    }
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
 
+        let pokemonArray = [];
+        pokemonArray.push(data);
+        console.log(pokemonArray);
+        displayList(pokemonArray);
 
+        useFilter(pokemonArray);
 
-
- 
+        return pokemonArray;
+      });
+  }
+}
 
 // display the list of pokemon that was fetched along with their stats
 
-function displayList (items) {
-    let listOutput = document.querySelector('.list-output')
-    console.log(items);
-    if (items.length == 0){
-        listOutput.innerHTML = " "
-    } else {
-    
+function displayList(items) {
+  let listOutput = document.querySelector(".list-output");
+  console.log(items);
+  if (items.length == 0) {
+    listOutput.innerHTML = " ";
+  } else {
     const card = `
-     <div id=${items[0].types[0].type.name} class="wrapper list-wrapper">
-
-         
-         <div class="info-wrapper">
-             <h1>${items[0].name}</h1>
-             <div class="stats-wrapper">
-             <img class="w-100" src=${items[0].sprites.front_default} alt=${items[0].name}/>
-                 <a href="#" class="add-btn btn btn-primary">Add</a>
-             </div>
-         </div>
+      <div class="container-fluid">
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
+          <div class="info-wrapper ">
+          <h1></h1>
+              <div class="stats-wrapper">
+              <img class="w-100" src=${items[0].sprites.front_default} alt=${items[0].name}/>
+              </div>
+          </div>
+        </div>
      </div>
 
-     `
-    listOutput.innerHTML += card 
-    
- };
-    };
-    
-     
-
-
-
-function useFilter (info) {
-const dropDown = document.querySelectorAll('.dropdown-item')
-
-dropDown.forEach((each, key) => {
-    const value = each.getAttribute('id')
-    const types = info[0].types[0].type.name
-    console.log(value + "=" + types)
-              
-    each.addEventListener("click", () => {
-        
-        filteredData(value,types,info)
-            
-        })
-        
-        
-    })
+     `;
+    listOutput.innerHTML += card;
+  }
 }
-function filteredData (value, types, info) {
-    let filteredArray = []
-    const wrapper = document.querySelectorAll('.list-wrapper')
-    wrapper.forEach(wrap => {
-      const atty = wrap.getAttribute('id')
-      console.log(atty)
-        if( value == atty) {
-           console.log("works")
-            wrap.style.display = "block"
-        } else if (value == "none") {
-            wrap.style.display = "block"
-        } else {
-            wrap.style.display = "none"
-        }
-    })
-        
-    
+
+function useFilter(info) {
+  const dropDown = document.querySelectorAll(".dropdown-item");
+
+  dropDown.forEach((each, key) => {
+    const value = each.getAttribute("id");
+    const types = info[0].types[0].type.name;
+    console.log(value + "=" + types);
+
+    each.addEventListener("click", () => {
+      filteredData(value, types, info);
+    });
+  });
+}
+function filteredData(value, types, info) {
+  let filteredArray = [];
+  const wrapper = document.querySelectorAll(".list-wrapper");
+  wrapper.forEach((wrap) => {
+    const atty = wrap.getAttribute("id");
+    console.log(atty);
+    if (value == atty) {
+      console.log("works");
+      wrap.style.display = "block";
+    } else if (value == "none") {
+      wrap.style.display = "block";
+    } else {
+      wrap.style.display = "none";
+    }
+  });
 }
 
 // card for pokemon that are displayed on page load
 
-
-
- const searchBtn = document.querySelector('#search-btn')
- searchBtn.addEventListener('click', searchPokemon)   
-function searchPokemon (event) {
-    event.preventDefault()
-    const searchValue = document.querySelector('.form-control').value
-    showSinglePokemonInfo(searchValue) 
-    // console.log(searchValue)
-
+const searchBtn = document.querySelector("#search-btn");
+searchBtn.addEventListener("click", searchPokemon);
+function searchPokemon(event) {
+  event.preventDefault();
+  const searchValue = document.querySelector(".form-control").value;
+  showSinglePokemonInfo(searchValue);
+  // console.log(searchValue)
 }
 // setting up the show single pokemon info
 function showSinglePokemonInfo(pokemonName) {
@@ -229,10 +201,5 @@ rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
-
-
-
-
-
 
 

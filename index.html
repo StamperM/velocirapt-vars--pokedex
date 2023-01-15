@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Oswald:wght@200&family=Paytone+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/style.css">  
-          <title>Document</title>
+          <title>Pokémon</title>
 </head>
 
 
@@ -25,37 +25,12 @@
         <nav class="navbar navbar-light bg-light">
           
             <div class="container-fluid">
-                <h1>Pokemon Battle Go!</h1>
-                <a class="navbar-brand" onclick="displayCardOnHover()">Battle Teams</a>
+                <h1>Pokémon Battle Go!</h1>
+                <a class="navbar-brand">Battle Teams</a>
                
             </div>
         </nav>
-
-    </header>
-    <main>
-      <!-- will use search and diplay pokemon that was searched for -->
-      <section class="searched-output-section">
-        <section
-          class="searched-output-section d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
-        >
-          <h2>Search for Pokemon</h2>
-          <div
-            id="fetched-pokemon"
-            class="border w-25 d-flex justify-content-center p-3"
-          >
-            ?
-          </div>
-        </section>
-        <!-- will pull js to populate grid of all pokemon -->
-        <section class="list-output row row-cols-5"></section>
-      </section>
-      <section class="container pokemon-list section justify-content-evenly">
-        <div class="container">
-          <div class="row row-cols-auto justify-content-evenly">
-            
-
-            <div class="container">
-                <div>
+        <div class="search-bar">
             <form class="d-flex col">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
@@ -87,15 +62,44 @@
                   <li><a class="dropdown-item" id="none"  href="#">None</a></li>
                 </ul>
               </div>
+
+    </header>
+    <main>
+      <!-- will use search and diplay pokemon that was searched for -->
+      <section class="searched-output-section">
+        <section
+          class="searched-output-section d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
+        >
+          <h2>Search for Pokémon</h2>
+          <div
+            id="fetched-pokemon"
+            class="w-25 d-flex justify-content-center p-3"
+          >
+          </div>
+        </section>
+        <!-- will pull js to populate grid of all pokemon -->
+        <!-- <section class="list-output row row-cols-5"></section> -->
+        <div class="pagbtn">
+            <button type="button" id="left-arrow" class="btn btn-light">Page Left</button>
+            <button type="button" id="right-arrow" class="btn btn-light">Page Right</button>
+          </div>
+        <section class="list-output">
+          <!-- <div>
+            <h1>Pokémon</h1>
+            <h2>Pokédex</h2>
+          </div> -->
+        </section>
+      </section>
+      <section class="container pokemon-list section justify-content-evenly">
+        <div class="container">
+          <div class="row row-cols-auto justify-content-evenly">
+            
+
+            <div class="container">
+                
         </div>
         </section>
-        <button type="button" id="left-arrow" class="btn btn-info">Left arrow</button>
-            <button type="button" id="right-arrow" class="btn btn-info">Right arrow</button>
-        <section class="list-output ">
           
-            
-        </section>
-        
         </div>
       </section>
     </main>

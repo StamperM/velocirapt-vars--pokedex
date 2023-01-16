@@ -114,6 +114,7 @@ button {
 }
 .info-card-div {
     background-color: blue;
+   
     
 }
 
@@ -124,7 +125,7 @@ button {
 .parent:hover .hover-wrapper {
     display: block;
    position: absolute;
-   z-index: 100;
+   z-index: 800;
    height: 100%;
    width: 100%;
    top: 0;
@@ -171,4 +172,46 @@ button {
     display: grid;
     width: auto;
     margin: auto;
+}
+#add-member {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.panel-footer .parent {
+    width: 200px;
+    
+}
+.panel-footer {
+    min-height: 75px;
+    
+}
+.mapped-div div {
+    width: 100%;
+    overflow: hidden;
+}
+.ul-team {
+    display: flex;
+   
+}
+#plus-minus-div {
+    color: white;
+    font-size: 3em;
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    cursor: pointer;
+}
+.panel[data-show="false"] {
+    transform: translateY(75%);
+}
+.panel[data-show="true"] {
+    transform: translateY(0%);
+}
+.panel {
+    transition: 700ms;
 }

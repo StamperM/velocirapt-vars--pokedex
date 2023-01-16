@@ -79,12 +79,12 @@ function displayList(items) {
               <img id= "pokemon-img" class="w-100" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
           </div>
             <div id=${items[0].name}  class="hover-wrapper">
-            <div class="hp-div info-card-div" style="width:${items[0].stats[0].base_stat}%">HP: ${items[0].stats[0].base_stat}</div>
-            <div class="attack-div info-card-div" style="width:${items[0].stats[1].base_stat}%">Attack: ${items[0].stats[1].base_stat}</div>
-            <div class="defense-div info-card-div" style="width:${items[0].stats[2].base_stat}%">Defense: ${items[0].stats[2].base_stat}</div>
-            <div class="specialatk-div info-card-div" style="width:${items[0].stats[3].base_stat}%">Special-Attack: ${items[0].stats[3].base_stat}</div>
-            <div class="specialdef-div info-card-div" style="width:${items[0].stats[4].base_stat}%">Special-Defense: ${items[0].stats[4].base_stat}</div>
-            <div class="speed-div info-card-div" style="width:${items[0].stats[5].base_stat}%">speed: ${items[0].stats[5].base_stat}</div>
+            <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
+            <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
+            <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
+            <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
+            <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
+            <div class="barContianer">speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
           </div>
         </div>
         

@@ -121,8 +121,8 @@ button {
 }
 
 .info-card-div {
-    background-color: blue;
-
+    background-color: rgba(242, 242, 248, 0.897);
+    
 }
 
 .hover-wrapper {
@@ -131,13 +131,13 @@ button {
 
 .parent:hover .hover-wrapper {
     display: block;
-    position: absolute;
-    z-index: 100;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(0, 0, 255, .7);
+   position: absolute;
+   z-index: 100;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background-color:rgba(246, 246, 250, 0.7) ;
 }
 
 
@@ -148,36 +148,53 @@ button {
 
 .parent:hover .hover-wrapper {
     display: block;
-    position: absolute;
-    z-index: 100;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(0, 0, 255, .7);
+   position: absolute;
+   z-index: 100;
+   height: 90%;
+   width: 90%;
+   top: 20px;
+   left: 5px;
+   right: 5px;
+   background-color:rgba(246, 246, 250, 0.7) ;
 }
 
 
-.searched-output-section {
+
+.pagbtn button{
+    background-color: whitesmoke;
+}
+
+/* section .search-wrap {
+    background-color: whitesmoke;
+    width: 100%;
+
+
+
+} */
+
+.searched-output-section{
     display: grid;
     width: auto;
     margin: auto;
 }
-
-.dropdown{
-    padding-left: 10px;
+.barContainer {
+    
+    background-color: rgb(192, 192, 192);
+    width: 80%;
+    border-radius: 15px;
 }
 
-.list-output h1{
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-radius: 10px;
+.skill{
+    background-color: rgb(50, 51, 49,.25);       
+    color: white;
+            padding: 2%;
+            text-align: right;
+            font-size: 9px;
+border-top-right-radius:15px ;
+border-bottom-right-radius:15px ;
 }
 
-
-.header-content{
-    display: flex;
-    height: 10%;
-    width: 50%;
+li, .dropdown-item{
+    background-color: rgb(50, 51, 49,.25);
+    color: white;
 }

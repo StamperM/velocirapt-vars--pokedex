@@ -16,14 +16,14 @@ function getAll151FetchCall(limit){
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 function displayPokemonNames (data){
-    pokemonDataArray = data.results;
-    syncedUpDataArray = [];
+    var pokemonDataArray = data.results;
+    var syncedUpDataArray = [];
     // console.log(PokemonDataArray);
     for( let i = 0; i < pokemonDataArray.length; i++){
-        PokemonNames = data.results[i].name;
+         var PokemonNames = data.results[i].name;
         // console.log(PokemonNames);
         syncedUpDataArray.push(PokemonNames);
-        // console.log(syncedUpDataArray);
+        
        
     };
     showPokemonInfo(syncedUpDataArray);
@@ -43,31 +43,33 @@ function showPokemonInfo(pokemonName) {
             return response.json();
         })
         .then(function (data){
-            let pokemonArray = []
-            pokemonArray.push(data)
-            displayList(pokemonArray)
-           useFilter(pokemonArray)
+            let pokemonArray = [];
+            pokemonArray.push(data);
+            displayList(pokemonArray);
+            // console.log(pokemonArray[0].height);
+           useFilter(pokemonArray);
           })
     };
   };
+  
 
 // display the list of pokemon that was fetched along with their stats
 
 function displayList(items) {
   let listOutput = document.querySelector(".list-output");
-  console.log(items);
+  
   if (items.length == 0) {
     listOutput.innerHTML = " ";
   } else if (items[0].id > 151) {
     var card = ` `;
   } else {
     const card = `
-      <div class="container-fluid">
+      <div class="container-fluid pokemon-card">
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
-              <img id= "pokemon-img" class="w-100" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
+              <img id= "pokemon-img" class="w-100" src="./assets/borderizedpokemon/my-image (${items[0].id}).png" alt=${items[0].name}/>
               </div>
           </div>
         </div>
@@ -76,10 +78,11 @@ function displayList(items) {
      `
     listOutput.innerHTML += card 
     
+    
  };
     };
     
-     
+    
 
 
 
@@ -89,7 +92,7 @@ const dropDown = document.querySelectorAll('.dropdown-item')
 dropDown.forEach((each, key) => {
     const value = each.getAttribute('id')
     const types = info[0].types[0].type.name
-    console.log(value + "=" + types)
+    
               
     each.addEventListener("click", () => {
         filteredData(value,types,info);
@@ -215,5 +218,10 @@ rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
+
+
+
+
+
 
 

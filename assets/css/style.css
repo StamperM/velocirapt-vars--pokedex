@@ -159,13 +159,7 @@ button {
     background-color: whitesmoke;
 }
 
-/* section .search-wrap {
-    background-color: whitesmoke;
-    width: 100%;
 
-
-
-} */
 
 .searched-output-section{
     display: grid;
@@ -186,4 +180,8 @@ button {
             font-size: 8px;
 border-top-right-radius:15px ;
 border-bottom-right-radius:15px ;
+}
+li, .dropdown-item{
+    background-color: rgb(50, 51, 49,.25);
+    color: white;
 }

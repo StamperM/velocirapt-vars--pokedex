@@ -107,6 +107,16 @@ button {
     padding: 10px;
 }
 
+
+/* code below is for onhover for stats */
+.container-fluid {
+    overflow: hidden;
+}
+.info-card-div {
+    background-color: blue;
+    
+}
+
 .hover-wrapper {
     display: none;
 }

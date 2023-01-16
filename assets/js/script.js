@@ -68,9 +68,18 @@ function displayList(items) {
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
               <img id= "pokemon-img" class="w-100" src=${"./assets/pokemon/" + items[0].id + ".png"} alt=${items[0].name}/>
-              </div>
           </div>
         </div>
+        <div class="stats-wrapper on-hover">
+                
+                <div class="hp-div info-card-div" style="width:${items[0].stats[0].base_stat}%">HP: ${items[0].stats[0].base_stat}</div>
+                <div class="attack-div info-card-div" style="width:${items[0].stats[1].base_stat}%">Attack: ${items[0].stats[1].base_stat}</div>
+                <div class="defense-div info-card-div" style="width:${items[0].stats[2].base_stat}%">Defense: ${items[0].stats[2].base_stat}</div>
+                <div class="specialatk-div info-card-div" style="width:${items[0].stats[3].base_stat}%">Special-Attack: ${items[0].stats[3].base_stat}</div>
+                <div class="specialdef-div info-card-div" style="width:${items[0].stats[4].base_stat}%">Special-Defense: ${items[0].stats[4].base_stat}</div>
+                <div class="speed-div info-card-div" style="width:${items[0].stats[5].base_stat}%">speed: ${items[0].stats[5].base_stat}</div>
+            </div>
+      </div>
 
 
      `

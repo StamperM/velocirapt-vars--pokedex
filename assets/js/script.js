@@ -1,8 +1,10 @@
 // main fetch function that gets the name of all 151 pokemon only
-let offset = 0;
+let offset = 0; 
+
 function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     // fetch call
+  
     fetch(pokeApiCallTemplate)
         .then(function (response){
             return response.json();
@@ -14,6 +16,7 @@ function getAll151FetchCall(limit){
         // console.log(data.results);
         // console.log(data.results[8].name);
         })
+        
         };
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
@@ -30,11 +33,14 @@ function displayPokemonNames (data){
        
     };
     showPokemonInfo(syncedUpDataArray);
+    
+    
 };
 
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
-function showPokemonInfo(pokemonName) {
+ 
+ function showPokemonInfo(pokemonName) {
   // console.log(pokemonName);
   // template that will plug in the parameter pokemon name
   for (var i = 0; i < pokemonName.length; i++) {
@@ -42,32 +48,38 @@ function showPokemonInfo(pokemonName) {
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
     // fetch call
     fetch(pokeApiCallTemplate)
-        .then(function (response){
+    .then(function (response){
             return response.json();
         })
-        .then(function (data){
-            let pokemonArray = []
-            pokemonArray.push(data)
-            displayList(pokemonArray)
+    .then(function (data){
+      let pokemonArray = []
+      pokemonArray.push(data)
+           
+           displayList(pokemonArray)
            useFilter(pokemonArray)
-        //    console.log(pokemonArray);
-        //    comsole.log(pokemonArray[0].height);
+      let dataVar = data
+      return pokemonArray
+        
+       
           })
     };
+    console.log(fetch)
   };
 
 // display the list of pokemon that was fetched along with their stats
-
 function displayList(items) {
   let listOutput = document.querySelector(".list-output");
+  
 //   console.log(items);
   if (items.length == 0) {
     listOutput.innerHTML = " ";
-  } else if (items[0].id > 151) {
+  } else if (items.id > 151) {
     var card = ` `;
+    listOutput.innerHTML += card
   } else {
     const card = `
       <div class="container-fluid parent">
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";> 
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";> 
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
@@ -82,16 +94,24 @@ function displayList(items) {
             <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
             <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
             <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
+            <div class= "row">
+            <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
+            <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
+            <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
+            <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
+            <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
+            <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
           </div>
         </div>
-        
-
-
      `
-    listOutput.innerHTML += card 
-    addToTeam();
+    listOutput.innerHTML += card
+    }
+    
+    
+    //  newAddToTeam()
  };
-    };
+
+    
     
      
 
@@ -188,6 +208,7 @@ function displaySearchedPokemon(info) {
     `;
 
   pokemonOutput.innerHTML = card;
+  
 };
 
 // pulling the values for the left and right buttons
@@ -251,16 +272,71 @@ rightArrow.addEventListener("click", rightPagination);
 getAll151FetchCall(20);
 
 
+
+ var targetCardPhoto = [];
 function addToTeam(){
     var listOutput = document.querySelector(".list-output");
     // console.log(pokemonCard);
     listOutput.addEventListener("click", function(event){
-        var targetCardPhoto = [];
-        targetCardPhoto.push(event.target.src);
-        console.log(targetCardPhoto);
-        var footerDisplay =document.querySelector(".panel-footer");
+       
+        console.log(event.currentTarget + " event works")
+        targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
+        console.log(targetCardPhoto)
+        var footerDisplay =document.querySelector(".ul-team");
         var footerimage = document.createElement("IMG");
+        const mappy = targetCardPhoto.map(instance => {
+          
+          return `<div class="mapped-div parent">${instance.innerHTML}</div>`
+        })
+        footerDisplay.innerHTML = mappy
+        removeTeam(mappy)
     });
 
 };
+addToTeam() 
+function removeTeam (info) {
+  const ulTeam = document.querySelector(".panel")
+  const clearBtn = document.querySelector(".clear-btn")
+  var footerDisplay =document.querySelector(".ul-team");
+  clearBtn.addEventListener("click", () => {
+    targetCardPhoto = []
+    console.log(targetCardPhoto)
+    footerDisplay.innerHTML = ""
+  })
+  
+}
 
+
+
+
+
+
+const showBtn = document.querySelector('.shrink-grow-panel')
+function showBattleFooter () {
+  const footer = document.querySelector('.panel')
+  // let pokemonList = showPokemonInfo(data)
+  // console.log(pokemonList)
+  const footVar = footer.getAttribute("data-show")
+  console.log("works")
+  if (footVar == "true") {
+    footer.setAttribute("data-show", "false")
+    showBtn.innerHTML = "Show Team Menu"
+    console.log(footVar)
+  } else {
+    footer.setAttribute("data-show", "true")
+    showBtn.innerHTML = "Hide Team Menu"
+    console.log(footVar)
+  }
+}
+
+showBtn.addEventListener("click", showBattleFooter)
+
+
+function init () {
+  getAll151FetchCall(20);
+  
+  
+}
+init()
+
+// on starting of the page, place in 20 pokemon to the call.

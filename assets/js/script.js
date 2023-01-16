@@ -10,12 +10,17 @@ function getAll151FetchCall(limit){
         .then(function (data){
         // plug in to display pokemon names with the data
         displayPokemonNames(data);
+        // console.log(data);
+        // console.log(data.results);
+        // console.log(data.results[8].name);
         })
         };
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 function displayPokemonNames (data){
+    var pokemonDataArray = data.results;
+    var syncedUpDataArray = [];
     var pokemonDataArray = data.results;
     var syncedUpDataArray = [];
     // console.log(PokemonDataArray);
@@ -249,4 +254,16 @@ rightArrow.addEventListener("click", rightPagination);
 getAll151FetchCall(20);
 displayCardOnHover();
 
+function addToTeam(){
+    var listOutput = document.querySelector(".list-output");
+    // console.log(pokemonCard);
+    listOutput.addEventListener("click", function(event){
+        var targetCardPhoto = [];
+        targetCardPhoto.push(event.target.src);
+        console.log(targetCardPhoto);
+        var footerDisplay =document.querySelector(".panel-footer");
+        var footerimage = document.createElement("IMG");
+    });
+
+};
 

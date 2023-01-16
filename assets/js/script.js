@@ -69,7 +69,7 @@ function displayList(items) {
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
-              <img id= "pokemon-img" class="w-100" src="./assets/borderizedpokemon/my-image (${items[0].id}).png" alt=${items[0].name}/>
+              <img id= "pokemon-img" class="w-100" src="./assets/pokemon/${items[0].id}.png" alt=${items[0].name}/>
               </div>
           </div>
             <div id=${items[0].name}  class="hover-wrapper">

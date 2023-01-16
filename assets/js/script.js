@@ -165,11 +165,11 @@ function displaySearchedPokemon(info) {
   // console.log(info)
   const pokemonOutput = document.querySelector("#fetched-pokemon");
   const card = `
-    <div class="wrapper">
+    <div class="wrapper card shadow p-3 mb-5 bg-body-tertiary rounded search-wrap">
         <img class="w-100" src=${info.sprites.front_default} alt=${info.name}/>
         <div class="info-wrapper">
-            <h1>${info.name}</h1>
-            <div class="stats-wrapper">
+            <h1 id="pokemon-name">${info.name}</h1>
+            <div class="stats-wrapper" id="pokemon-stats">
                 <div class="hp-div">HP: ${info.stats[0].base_stat}</div>
                 <div class="attack-div">Attack: ${info.stats[1].base_stat}</div>
                 <div class="defense-div">Defense: ${info.stats[2].base_stat}</div>

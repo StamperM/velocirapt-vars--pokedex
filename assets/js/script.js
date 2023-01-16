@@ -64,13 +64,21 @@ function displayList(items) {
     var card = ` `;
   } else {
     const card = `
-      <div class="container-fluid pokemon-card">
+      <div class="container-fluid pokemon-card parent">
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
               <img id= "pokemon-img" class="w-100" src="./assets/borderizedpokemon/my-image (${items[0].id}).png" alt=${items[0].name}/>
               </div>
+          </div>
+            <div id=${items[0].name}  class="hover-wrapper">
+            <div class="hp-div">HP: ${items[0].stats[0].base_stat}</div>
+            <div class="attack-div">Attack: ${items[0].stats[1].base_stat}</div>
+            <div class="defense-div">Defense: ${items[0].stats[2].base_stat}</div>
+            <div class="specialatk-div">Special-Attack: ${items[0].stats[3].base_stat}</div>
+            <div class="specialdef-div">Special-Defense: ${items[0].stats[4].base_stat}</div>
+            <div class="speed-div">speed: ${items[0].stats[5].base_stat}</div>
           </div>
         </div>
 
@@ -212,16 +220,32 @@ function leftPagination() {
   }
 };
 
+
+// function displayCardOnHover() {
+//   console.log("it works")
+//   var cardWrapper = document.querySelectorAll(".list-wrapper")
+//   var cardStatsWrapper = document.querySelectorAll(".hover-wrapper")
+  
+//   cardWrapper.forEach(element => { 
+//     var targetDiv = element.target;
+//     element.addEventListener("mouseover",function(){
+// console.log(targetDiv);
+//       cardStatsWrapper.forEach(item=>{
+  
+  // item.classList.remove("")
+// })
+//     })
+//   });
+// }
+
+
+
 // adding event listeners to the buttons
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
-
-
-
-
-
+displayCardOnHover();
 
 

@@ -10,17 +10,20 @@ function getAll151FetchCall(limit){
         .then(function (data){
         // plug in to display pokemon names with the data
         displayPokemonNames(data);
+        // console.log(data);
+        // console.log(data.results);
+        // console.log(data.results[8].name);
         })
         };
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 function displayPokemonNames (data){
-    pokemonDataArray = data.results;
-    syncedUpDataArray = [];
+    var pokemonDataArray = data.results;
+    var syncedUpDataArray = [];
     // console.log(PokemonDataArray);
     for( let i = 0; i < pokemonDataArray.length; i++){
-        PokemonNames = data.results[i].name;
+        var PokemonNames = data.results[i].name;
         // console.log(PokemonNames);
         syncedUpDataArray.push(PokemonNames);
         // console.log(syncedUpDataArray);
@@ -47,6 +50,8 @@ function showPokemonInfo(pokemonName) {
             pokemonArray.push(data)
             displayList(pokemonArray)
            useFilter(pokemonArray)
+        //    console.log(pokemonArray);
+        //    comsole.log(pokemonArray[0].height);
           })
     };
   };
@@ -55,14 +60,18 @@ function showPokemonInfo(pokemonName) {
 
 function displayList(items) {
   let listOutput = document.querySelector(".list-output");
-  console.log(items);
+//   console.log(items);
   if (items.length == 0) {
     listOutput.innerHTML = " ";
   } else if (items[0].id > 151) {
     var card = ` `;
   } else {
     const card = `
+<<<<<<< HEAD
       <div class="container-fluid parent">
+=======
+      <div class="container-fluid pokemon-card">
+>>>>>>> 7abc8b3 (getting up to date with everyone)
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
@@ -83,7 +92,7 @@ function displayList(items) {
 
      `
     listOutput.innerHTML += card 
-    
+    addToTeam();
  };
     };
     
@@ -97,7 +106,7 @@ const dropDown = document.querySelectorAll('.dropdown-item')
 dropDown.forEach((each, key) => {
     const value = each.getAttribute('id')
     const types = info[0].types[0].type.name
-    console.log(value + "=" + types)
+    // console.log(value + "=" + types)
               
     each.addEventListener("click", () => {
         filteredData(value,types,info);
@@ -245,4 +254,16 @@ rightArrow.addEventListener("click", rightPagination);
 getAll151FetchCall(20);
 displayCardOnHover();
 
+function addToTeam(){
+    var listOutput = document.querySelector(".list-output");
+    // console.log(pokemonCard);
+    listOutput.addEventListener("click", function(event){
+        var targetCardPhoto = [];
+        targetCardPhoto.push(event.target.src);
+        console.log(targetCardPhoto);
+        var footerDisplay =document.querySelector(".panel-footer");
+        var footerimage = document.createElement("IMG");
+    });
+
+};
 

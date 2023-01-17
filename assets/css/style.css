@@ -31,6 +31,7 @@ section .list-output {
     grid-template-rows: 1fr 1fr 1fr 1fr; */
     margin: 10px;
     grid-gap: 0px 10px;
+    background-color: whitesmoke;
 }
 
 * {
@@ -137,6 +138,13 @@ button {
     background-color: rgba(242, 242, 248, 0.897);
 }
 
+
+.parent {
+    overflow: hidden;
+}
+
+
+
 .hover-wrapper {
     display: none;
 }
@@ -168,7 +176,9 @@ button {
     left: 5px;
     right: 5px;
     background-color: rgba(246, 246, 250, 0.7);
+    cursor: pointer;
 }
+
 
 
 
@@ -202,10 +212,11 @@ button {
 
 } */
 
-.searched-output-section {
+.searched-output-section  {
     display: grid;
     width: auto;
-    margin: auto;
+    
+    z-index: -1;
 }
 
 .barContainer {
@@ -227,7 +238,7 @@ button {
 }
 
 li,
-.dropdown-item {
+.dropdown-item  {
     background-color: rgb(50, 51, 49, .25);
     color: white;
 }
@@ -239,4 +250,25 @@ li,
 .title{
     color: #6C757D;
     font-size: 3vmin;
+}
+.rando-row {
+    z-index: 300;
+    width: 75%;
+}
+.wrapper {
+    z-index: 200;
+}
+.ul-team {
+   display: flex;
+    
+}
+.ul-team .wrapper {
+    width: 250px;
+
+}
+.team-setter {
+    cursor: pointer;
+}
+.team-setter:hover {
+    background-color: rgb(255, 255, 255, 0.2);
 }

@@ -106,10 +106,11 @@ function displayList(items) {
 
 // listening for the dropdown menu, selecting the dropdown items
 function useFilter () {
-const dropDown = document.querySelector('.dropdown-menu');
+const dropDown = document.querySelector('#fighting-type-dropdown');
 
 dropDown.addEventListener("click", function(event){
-  dropDownID = event.target.id;
+  console.log("hello");
+   var dropDownID = event.target.id;
   filteredData(dropDownID)
 })
 };
@@ -230,8 +231,8 @@ function leftPagination() {
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
-// on starting of the page, place in 20 pokemon to the call.
-getAll151FetchCall(20);
+
+
 
 
 
@@ -256,9 +257,9 @@ function addToTeam(){
       }
         
         
-        console.log(targetCardPhoto)
+        // console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
-        var footerimage = document.createElement("IMG");
+        var footerimage = document.createElement("img");
         
         const mappy = targetCardPhoto.map(instance => {
           
@@ -282,8 +283,9 @@ function removeTeam (info) {
   
 }
 
-const addTeamBtn = document.querySelector(".add-team-btn")
-addTeamBtn.addEventListener('click', saveTeamToStorage)
+const addTeamBtn = document.querySelector(".add-team-btn");
+addTeamBtn.addEventListener('click', saveTeamToStorage);
+
 function saveTeamToStorage () {
   const dropDown = document.querySelector(".team-dropdown")
   let dropValue = dropDown.innerHTML
@@ -291,13 +293,33 @@ function saveTeamToStorage () {
   localStorage.setItem(`${dropValue}`, JSON.stringify(footerDisplay.innerHTML))
   footerDisplay.innerHTML = "Team Saved!"
   targetCardPhoto = []
-  console.log(footerDisplay.innerHTML)
+  // console.log(footerDisplay.innerHTML)
 }
 
-function getFromStorage () {
+
+function getTeamList () {
+  const dropDown = document.querySelector(".team-button")
+  const setTeam = document.querySelectorAll('.new-dropdown-item')
+  setTeam.forEach(each => {
+    each.addEventListener('click', (event) => {
+      event.preventDefault();
+      let value = each.innerHTML
+      console.log(value)
+      dropDown.innerHTML = value
+      getFromStorage(value)
+    });
+    
+  });
+  
+}
+
+getTeamList();
+
+function getFromStorage (value) {
+  console.log(value);
   var footerDisplay = document.querySelector(".ul-team");
-  console.log(JSON.parse(localStorage.getItem("team")))
-  footerDisplay.innerHTML = JSON.parse(localStorage.getItem(`${dropValue}`))
+  console.log(JSON.parse(localStorage.getItem(`${value}`)));
+  footerDisplay.innerHTML = JSON.parse(localStorage.getItem(`${value}`))
 }
 
 
@@ -347,18 +369,6 @@ flatpickr("#date",{
 
 showBtn.addEventListener("click", showBattleFooter)
 useFilter();
-
-
-var teamButton = document.querySelector(".team-button");
-var footerElement = document.getElementsByClassName("panel-footer")
-
-teamButton.addEventListener("click", function(event){
-  var selectedTeam = event.target.id
-  console.log(selectedTeam);
-  footerElement.innterHTML = JSON.parse(localStorage.getItem(selectedTeam));
-});
-
-
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);

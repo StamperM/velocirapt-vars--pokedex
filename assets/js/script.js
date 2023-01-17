@@ -1,10 +1,10 @@
 // main fetch function that gets the name of all 151 pokemon only
 let offset = 0; 
 
-
 function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     // fetch call
+  
   
     fetch(pokeApiCallTemplate)
         .then(function (response){
@@ -13,18 +13,14 @@ function getAll151FetchCall(limit){
         .then(function (data){
         // plug in to display pokemon names with the data
         displayPokemonNames(data);
-        // console.log(data);
-        // console.log(data.results);
-        // console.log(data.results[8].name);
         })
+        
         
         };
 
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 function displayPokemonNames (data){
-    var pokemonDataArray = data.results;
-    var syncedUpDataArray = [];
     var pokemonDataArray = data.results;
     var syncedUpDataArray = [];
     // console.log(PokemonDataArray);
@@ -38,10 +34,14 @@ function displayPokemonNames (data){
     showPokemonInfo(syncedUpDataArray);
     
     
+    
+    
 };
 
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
+ 
+ 
  
  function showPokemonInfo(pokemonName) {
   // console.log(pokemonName);
@@ -51,6 +51,7 @@ function displayPokemonNames (data){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
     // fetch call
     fetch(pokeApiCallTemplate)
+    
     .then(function (response){
             return response.json();
         })
@@ -58,14 +59,11 @@ function displayPokemonNames (data){
             let pokemonArray = [];
             pokemonArray.push(data);
             displayList(pokemonArray);
-            // console.log(pokemonArray[0].height);
-           useFilter(pokemonArray);
           })
     };
-    console.log(fetch)
+    
   };
   
-
 // display the list of pokemon that was fetched along with their stats
 function displayList(items) {
   let listOutput = document.querySelector(".list-output");
@@ -78,7 +76,7 @@ function displayList(items) {
   } else {
     const card = `
       <div class="container-fluid parent">
-        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";> 
           <div class="info-wrapper ">
             <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
@@ -96,37 +94,25 @@ function displayList(items) {
           </div>
      `
     listOutput.innerHTML += card 
-    
-    
- };
-
-    
+  };
 };
-    
 
+// listening for the dropdown menu, selecting the dropdown items
+function useFilter () {
+const dropDown = document.querySelector('.dropdown-menu');
 
-
-function useFilter (info) {
-const dropDown = document.querySelectorAll('.dropdown-item')
-
-dropDown.forEach((each, key) => {
-    const value = each.getAttribute('id')
-    const types = info[0].types[0].type.name
-    
-              
-    each.addEventListener("click", () => {
-        filteredData(value,types,info);
-      });
-  });
+dropDown.addEventListener("click", function(event){
+  dropDownID = event.target.id;
+  filteredData(dropDownID)
+})
 };
 
 //setting up the filtered data function that will filter through the types of pokemon, ex. fire, grass, rock...
-function filteredData (value, types, info) {
-    let filteredArray = []
+function filteredData (value) {
     const wrapper = document.querySelectorAll('.list-wrapper')
     wrapper.forEach(wrap => {
       const atty = wrap.getAttribute('id')
-      console.log(atty)
+      
         if( value == atty) {
            console.log("works")
             wrap.style.display = "block"
@@ -194,7 +180,7 @@ function displaySearchedPokemon(info) {
             </div>
         </div>
     </div>
-    `;
+    `
 
   pokemonOutput.innerHTML = card;
   
@@ -218,7 +204,6 @@ function rightPagination() {
 };
   };
   
-
 // adding the function for leftPagination, if button is clicked, set fetch call offset to subtract 20
 // and set the current HTML to be  blank, erasing all of the pokemon currently on the page
 function leftPagination() {
@@ -233,26 +218,6 @@ function leftPagination() {
   }
 };
 
-
-// function displayCardOnHover() {
-//   console.log("it works")
-//   var cardWrapper = document.querySelectorAll(".list-wrapper")
-//   var cardStatsWrapper = document.querySelectorAll(".hover-wrapper")
-  
-//   cardWrapper.forEach(element => { 
-//     var targetDiv = element.target;
-//     element.addEventListener("mouseover",function(){
-// console.log(targetDiv);
-//       cardStatsWrapper.forEach(item=>{
-  
-  // item.classList.remove("")
-// })
-//     })
-//   });
-// }
-
-
-
 // adding event listeners to the buttons
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
@@ -264,9 +229,10 @@ getAll151FetchCall(20);
 
 
  var targetCardPhoto = [];
+// 
+
 function addToTeam(){
     var listOutput = document.querySelector(".list-output");
-    // console.log(pokemonCard);
     listOutput.addEventListener("click", function(event){
        
         console.log(event.target.innerHTML + " event works")
@@ -280,6 +246,7 @@ function addToTeam(){
         console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
         var footerimage = document.createElement("IMG");
+        
         const mappy = targetCardPhoto.map(instance => {
           
           return `<div class="mapped-div parent container">${instance.innerHTML}</div>`
@@ -359,13 +326,25 @@ function showBattleFooter () {
     console.log(footVar)
   }
 }
-flatpickr("#date",{
-  altInput: true,
-  altFormat: "F j, Y",
-  dateFormat: "Y-m-d",
-});
-console.lob(battleDate.val);
+
 showBtn.addEventListener("click", showBattleFooter)
+useFilter();
+
+
+var teamButton = document.getElementById("team-button");
+var footerElement = document.getElementsByClassName("panel-footer")
+
+teamButton.addEventListener("click", function(event){
+  var selectedTeam = event.target.id
+  console.log(selectedTeam);
+  footerElement.innterHTML = JSON.parse(localStorage.getItem(selectedTeam));
+});
+
 
 
 // on starting of the page, place in 20 pokemon to the call.
+getAll151FetchCall(20);
+  
+  
+
+

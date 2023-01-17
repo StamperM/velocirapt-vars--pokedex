@@ -70,7 +70,7 @@ function displayList(items) {
   
   if (items.length == 0) {
     listOutput.innerHTML = " ";
-  } else if (items.id > 151) {
+  } else if (items[0].id > 151) {
     var card = ` `;
     listOutput.innerHTML += card
   } else {
@@ -91,7 +91,8 @@ function displayList(items) {
             <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
             <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
             <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
-          </div>
+            <div class= "row">
+            
         </div>
      `
     listOutput.innerHTML += card 
@@ -223,8 +224,14 @@ function leftPagination() {
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
+// on starting of the page, place in 20 pokemon to the call.
+getAll151FetchCall(20);
+
+
+
+ var targetCardPhoto = [];
 // 
-var targetCardPhoto = [];
+
 function addToTeam(){
     var listOutput = document.querySelector(".list-output");
     listOutput.addEventListener("click", function(event){
@@ -287,8 +294,6 @@ teamButton.addEventListener("click", function(event){
   console.log(selectedTeam);
   footerElement.innterHTML = JSON.parse(localStorage.getItem(selectedTeam));
 });
-
-
 
 
 

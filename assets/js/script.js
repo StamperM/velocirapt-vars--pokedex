@@ -227,8 +227,8 @@ function leftPagination() {
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
-// on starting of the page, place in 20 pokemon to the call.
-getAll151FetchCall(20);
+
+
 
 
 
@@ -354,7 +354,6 @@ teamButton.addEventListener("click", function(event){
   console.log(selectedTeam);
   footerElement.innterHTML = JSON.parse(localStorage.getItem(selectedTeam));
 });
-
 
 
 // on starting of the page, place in 20 pokemon to the call.

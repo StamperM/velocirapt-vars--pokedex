@@ -165,18 +165,19 @@ function showSinglePokemonInfo(pokemonName) {
 function displaySearchedPokemon(info) {
   // console.log(info)
   const pokemonOutput = document.querySelector("#fetched-pokemon");
+  console.log(info);
   const card = `
     <div class="wrapper card shadow p-3 mb-5 bg-body-tertiary rounded search-wrap">
-        <img class="w-100" src=${info.sprites.front_default} alt=${info.name}/>
+         <img class="w-100" src=${"./assets/pokemon/" + info.id + ".png"} alt=${"#id"}/>
         <div class="info-wrapper">
             <h1 id="pokemon-name">${info.name}</h1>
             <div class="stats-wrapper" id="pokemon-stats">
-                <div class="hp-div">HP: ${info.stats[0].base_stat}</div>
-                <div class="attack-div">Attack: ${info.stats[1].base_stat}</div>
-                <div class="defense-div">Defense: ${info.stats[2].base_stat}</div>
-                <div class="specialatk-div">Special-Attack: ${info.stats[3].base_stat}</div>
-                <div class="specialdef-div">Special-Defense: ${info.stats[4].base_stat}</div>
-                <div class="speed-div">speed: ${info.stats[5].base_stat}</div>
+            <div class ="row">
+                <div class="barContianer">HP:<div class="hp-div skill" style="width:${info.stats[0].base_stat}%"> ${info.stats[0].base_stat}</div></div>
+                <div class="barContianer">Attack:<div class="attack-div skill" style="width:${info.stats[1].base_stat}%"> ${info.stats[1].base_stat}</div></div>
+                <div class="barContianer">Defense:<div class="defense-div skill" style="width:${info.stats[2].base_stat}%"> ${info.stats[2].base_stat}</div></div>
+                <div class="barContianer">Special-Defense:<div class="specialdef-div skill"  style="width:${info.stats[4].base_stat}%">${info.stats[4].base_stat}</div></div>
+                <div class="barContianer">Speed:<div class="speed-div skill" style="width:${info.stats[5].base_stat}%"> ${info.stats[5].base_stat}</div></div>
             </div>
         </div>
     </div>
@@ -326,6 +327,11 @@ function showBattleFooter () {
     console.log(footVar)
   }
 }
+flatpickr("#date",{
+  altInput: true,
+  altFormat: "F j, Y",
+  dateFormat: "Y-m-d",
+});
 
 showBtn.addEventListener("click", showBattleFooter)
 useFilter();

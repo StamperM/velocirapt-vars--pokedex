@@ -1,5 +1,9 @@
 // main fetch function that gets the name of all 151 pokemon only
 let offset = 0; 
+var teamButton = document.getElementById("team-button");
+var footerElement = document.getElementsByClassName("panel-footer")
+
+
 
 function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
@@ -338,8 +342,7 @@ showBtn.addEventListener("click", showBattleFooter)
 useFilter();
 
 
-var teamButton = document.getElementById("team-button");
-var footerElement = document.getElementsByClassName("panel-footer")
+
 
 teamButton.addEventListener("click", function(event){
   var selectedTeam = event.target.id

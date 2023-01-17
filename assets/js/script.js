@@ -85,7 +85,7 @@ function displayList(items) {
               </div>
           </div>
           <div id=${items[0].name}  class="hover-wrapper">
-            <div class= "row">
+            <div class= "row rando-row">
             <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
             <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
             <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
@@ -240,8 +240,8 @@ function addToTeam(){
     listOutput.addEventListener("click", function(event){
        
         console.log(event.target.innerHTML + " event works")
-        if (targetCardPhoto.length < 6) {
-          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
+        if (targetCardPhoto.length < 6 ) {
+          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
         } else {
            console.log("can only have six pokemon to a team")
            return

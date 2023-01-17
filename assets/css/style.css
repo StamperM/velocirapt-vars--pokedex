@@ -153,9 +153,9 @@ button {
 .parent:hover .hover-wrapper {
     display: block;
     position: absolute;
-    z-index: 800;
+    z-index: 1000;
     height: 90%;
-    width: 90%;
+    width: 100%;
     top: 20px;
     left: 5px;
     right: 5px;
@@ -235,15 +235,13 @@ li,
     color: #6C757D;
     font-size: 3vmin;
 }
-.rando-row {
-    z-index: 300;
-    width: 75%;
-}
+
 /* .wrapper {
     z-index: 100;
 } */
 .ul-team {
    display: flex;
+   color: white;
     
 }
 .ul-team .wrapper {
@@ -256,3 +254,14 @@ li,
 .team-setter:hover {
     background-color: rgb(255, 255, 255, 0.2);
 }
+.rando-row {
+    z-index: 0;
+    width: 75%;
+}
+/* do not remove. Used to show and hide the footer */
+.panel[data-show= "false"] {
+   transform: translateY(75%);
+}
+.panel[data-show= "true"] {
+    transform: translateY(0%);
+ }

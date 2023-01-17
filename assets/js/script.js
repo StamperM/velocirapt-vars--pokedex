@@ -185,16 +185,16 @@ function displaySearchedPokemon(info) {
   const pokemonOutput = document.querySelector("#fetched-pokemon");
   const card = `
     <div class="wrapper card shadow p-3 mb-5 bg-body-tertiary rounded search-wrap">
-        <img class="w-100" src=${info.sprites.front_default} alt=${info.name}/>
+        // <img class="w-100" src=${"./assets/pokemon/" + +".png"} alt=${"#id"}/>
         <div class="info-wrapper">
             <h1 id="pokemon-name">${info.name}</h1>
             <div class="stats-wrapper" id="pokemon-stats">
             <div class ="row">
-                <div class="barContianer">HP:<div class="hp-div skill" style="width${info.stats[0].base_stat}> ${info.stats[0].base_stat}</div></div>
-                <div class="barContianer">Attack:<div class="attack-div skill">Attack: ${info.stats[1].base_stat}</div></div>
-                <div class="barContianer">Defense:<div class="defense-div skill">Defense: ${info.stats[2].base_stat}</div></div>
-                <div class="barContianer">Special-Defense:<div class="specialdef-div skill">Special-Defense: ${info.stats[4].base_stat}</div></div>
-                <div class="barContianer">Speed:<div class="speed-div skill"> ${info.stats[5].base_stat}</div>
+                <div class="barContianer">HP:<div class="hp-div skill" style="width:${info.stats[0].base_stat}%"> ${info.stats[0].base_stat}</div></div>
+                <div class="barContianer">Attack:<div class="attack-div skill" style="width:${info.stats[1].base_stat}%"> ${info.stats[1].base_stat}</div></div>
+                <div class="barContianer">Defense:<div class="defense-div skill" style="width:${info.stats[2].base_stat}%"> ${info.stats[2].base_stat}</div></div>
+                <div class="barContianer">Special-Defense:<div class="specialdef-div skill"  style="width:${info.stats[4].base_stat}%">${info.stats[4].base_stat}</div></div>
+                <div class="barContianer">Speed:<div class="speed-div skill" style="width:${info.stats[5].base_stat}%"> ${info.stats[5].base_stat}</div></div>
             </div>
         </div>
     </div>

@@ -47,7 +47,7 @@
                   data-bs-toggle="dropdown" aria-expanded="false">
                   Team
                 </button>
-                <ul id = "ul-team" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <ul id = "team-button" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                   <li><a class="dropdown-item" id="team 1" href="#">Team 1</a></li>
                   <li><a class="dropdown-item" id="team 2" href="#">Team 2</a></li>
                   <li><a class="dropdown-item" id="team 3" href="#">Team 3</a></li>
@@ -124,8 +124,11 @@
 
   </main>
 
-      <div class="panel fixed-bottom" data-show=false>
-        
+      <div class="panel fixed-bottom" data-show="false">
+        <button class="shrink-grow-panel" >Show Team Menu</button>
+        <div class="panel-body" >
+         Battle Team
+        </div>
         <div class="panel-footer bg-dark d-flex flex-column justify-content-center align-items-center p-2" >
           
           <ul class="ul-team"></ul>

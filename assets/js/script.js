@@ -71,6 +71,7 @@ function displayList(items) {
   if (items.length == 0) {
     listOutput.innerHTML = " ";
   } else if (items[0].id > 151) {
+  } else if (items[0].id > 151) {
     var card = ` `;
     listOutput.innerHTML += card
   } else {
@@ -83,15 +84,17 @@ function displayList(items) {
               <img id= "pokemon-img" class="w-100" src="./assets/pokemon/${items[0].id}.png" alt=${items[0].name}/>
               </div>
           </div>
-            <div id=${items[0].name}  class="hover-wrapper">
-            <div class= "row">
+          <div id=${items[0].name}  class="hover-wrapper">
+            <div class= "row rando-row">
             <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
             <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
             <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
             <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
             <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
             <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
-          </div>
+            </div>
+        </div>
+      </div>
      `
     listOutput.innerHTML += card 
   };
@@ -246,7 +249,7 @@ function addToTeam(){
         
         // console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
-        var footerimage = document.createElement("IMG");
+        var footerimage = document.createElement("img");
         
         const mappy = targetCardPhoto.map(instance => {
           
@@ -337,7 +340,7 @@ showBtn.addEventListener("click", showBattleFooter)
 useFilter();
 
 
-var teamButton = document.getElementById("team-button");
+var teamButton = document.querySelector(".team 1");
 var footerElement = document.getElementsByClassName("panel-footer")
 
 teamButton.addEventListener("click", function(event){

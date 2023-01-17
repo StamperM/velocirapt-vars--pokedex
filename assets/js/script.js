@@ -185,7 +185,7 @@ function displaySearchedPokemon(info) {
   const pokemonOutput = document.querySelector("#fetched-pokemon");
   const card = `
     <div class="wrapper card shadow p-3 mb-5 bg-body-tertiary rounded search-wrap">
-        // <img class="w-100" src=${"./assets/pokemon/" + +".png"} alt=${"#id"}/>
+        // <img class="w-100" src=${"./assets/pokemon/" + info.stats.id +".png"} alt=${"#id"}/>
         <div class="info-wrapper">
             <h1 id="pokemon-name">${info.name}</h1>
             <div class="stats-wrapper" id="pokemon-stats">

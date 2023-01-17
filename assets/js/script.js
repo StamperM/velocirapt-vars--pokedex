@@ -74,7 +74,7 @@ function displayList(items) {
 //   console.log(items);
   if (items.length == 0) {
     listOutput.innerHTML = " ";
-  } else if (items.id > 151) {
+  } else if (items[0].id > 151) {
     var card = ` `;
     listOutput.innerHTML += card
   } else {
@@ -337,12 +337,5 @@ flatpickr("#date",{
 console.lob(battleDate.val);
 showBtn.addEventListener("click", showBattleFooter)
 
-
-function init () {
-  getAll151FetchCall(20);
-  
-  
-}
-init()
 
 // on starting of the page, place in 20 pokemon to the call.

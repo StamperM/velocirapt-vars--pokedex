@@ -80,7 +80,7 @@ function displayList(items) {
   } else {
     const card = `
       <div class="container-fluid parent">
-        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";> 
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">
@@ -88,7 +88,7 @@ function displayList(items) {
           </div>
             <div id=${items[0].name}  class="hover-wrapper">
             <div class= "row">
-            <div class="barContianer">HP:<div class="hp-div info-card-div skill" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
+            <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
             <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
             <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
             <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>

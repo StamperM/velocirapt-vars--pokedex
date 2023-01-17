@@ -1,7 +1,6 @@
 // main fetch function that gets the name of all 151 pokemon only
 let offset = 0; 
-var teamButton = document.getElementById("team-button");
-var footerElement = document.getElementsByClassName("panel-footer")
+
 
 
 

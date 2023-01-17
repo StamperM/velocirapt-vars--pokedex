@@ -233,6 +233,7 @@ rightArrow.addEventListener("click", rightPagination);
 
 
 
+
  var targetCardPhoto = [];
 // 
 

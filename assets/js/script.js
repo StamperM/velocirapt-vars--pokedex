@@ -374,6 +374,4 @@ console.lob(battleDate.val);
 showBtn.addEventListener("click", showBattleFooter)
 
 
-
-
 // on starting of the page, place in 20 pokemon to the call.

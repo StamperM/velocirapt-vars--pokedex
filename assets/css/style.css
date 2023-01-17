@@ -36,6 +36,8 @@ section .list-output {
 
 * {
     margin: 0;
+    font-family: 'Oswald', sans-serif;
+
 }
 
 .custom-direction {
@@ -59,22 +61,26 @@ section .list-output {
 }
 
 button {
-    font-family: 'Paytone One', sans-serif;
+    /* font-family: 'Paytone One', sans-serif; */
 
 }
 
 #pokemon-name {
     position: relative;
     text-align: center;
-    font-family: Montserrat;
+    /* font-family: Montserrat; */
     font-weight: 900;
     font-size: 3vmin;
+    border: solid;
+    border-radius: 10px;
+    background-color: rgb(34 37 41 / .8);
+    color: whitesmoke;
 }
 
 #pokemon-stats {
     position: relative;
     text-align: center;
-    font-family: Montserrat;
+    /* font-family: Montserrat; */
     font-size: 4vmin;
 }
 
@@ -85,12 +91,19 @@ button {
     padding-bottom: 0;
 }
 
-.search-bar {
+.search-bar form{
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
     margin: 10px;
+}
 
+.team-button{
+    position: relative;
+    left: 90%;
+}
+
+.dropdown{
+    margin: 10px;
 }
 
 .pagbtn {
@@ -102,15 +115,15 @@ button {
     position: sticky;
     z-index: 800;
     height: 100%;
-    background-color: transparent!important;
+    background-color: transparent !important;
 }
 
-.pagbtn i{
+.pagbtn i {
     color: grey;
 }
 
-.pagbtn button{
-    background-color: black!important;
+.pagbtn button {
+    background-color: black !important;
     opacity: 15%;
     height: 90px;
 }
@@ -123,16 +136,12 @@ button {
 
 .info-card-div {
     background-color: rgba(242, 242, 248, 0.897);
-    
-    background-color: rgba(242, 242, 248, 0.897);
-    
 }
 
 
 .parent {
     overflow: hidden;
 }
-
 
 
 
@@ -146,12 +155,30 @@ button {
    z-index: 100;
    height: 100%;
    width: 100%;
-   top: 20px;
+   top: 0;
    left: 0;
-   right: 0;
    background-color:rgba(246, 246, 250, 0.7) ;
-   cursor: pointer;
 }
+
+
+
+.hover-wrapper {
+    display: none;
+}
+
+.parent:hover .hover-wrapper {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    height: 90%;
+    width: 90%;
+    top: 20px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(246, 246, 250, 0.7);
+    cursor: pointer;
+}
+
 
 
 
@@ -185,14 +212,15 @@ button {
 
 } */
 
-.searched-output-section {
+.searched-output-section  {
     display: grid;
     width: auto;
     
     z-index: -1;
 }
+
 .barContainer {
-    
+
     background-color: rgb(192, 192, 192);
     width: 80%;
     border-radius: 15px;
@@ -200,18 +228,28 @@ button {
 }
 
 .skill {
-    background-color: rgb(50, 51, 49,.25);       
+    background-color: rgb(50, 51, 49, .25);
     color: white;
-            padding: 2%;
-            text-align: right;
-            font-size: 9px;
-border-top-right-radius:15px ;
-border-bottom-right-radius:15px ;
+    padding: 2%;
+    text-align: right;
+    font-size: 9px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
-li, .dropdown-item {
-    background-color: rgb(50, 51, 49,.25);
+li,
+.dropdown-item  {
+    background-color: rgb(50, 51, 49, .25);
     color: white;
+}
+
+.logo{
+    height: 60px;
+}
+
+.title{
+    color: #6C757D;
+    font-size: 3vmin;
 }
 .rando-row {
     z-index: 300;

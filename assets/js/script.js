@@ -79,8 +79,7 @@ function displayList(items) {
     listOutput.innerHTML += card
   } else {
     const card = `
-
-      <div class="container-fluid pokemon-card parent">
+      <div class="container-fluid parent">
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
@@ -95,7 +94,7 @@ function displayList(items) {
             <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
             <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
             <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
-            
+          </div>
         </div>
      `
     listOutput.innerHTML += card

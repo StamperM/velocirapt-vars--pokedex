@@ -113,7 +113,7 @@ button {
     margin: auto;
     top: 50%;
     position: sticky;
-    z-index: 800;
+    z-index: 799;
     height: 100%;
     background-color: transparent !important;
 }
@@ -157,8 +157,8 @@ button {
     height: 90%;
     width: 100%;
     top: 20px;
-    left: 5px;
-    right: 5px;
+    left:0;
+    right:0;
     background-color: rgba(246, 246, 250, 0.7);
     cursor: pointer;
 }
@@ -203,11 +203,12 @@ button {
     z-index: -1;
 }
 
-.barContainer {
+.barContianer {
 
-    background-color: rgb(192, 192, 192);
-    width: 80%;
-    border-radius: 15px;
+    
+    width: 100%;
+    
+    z-index: 12;
     
 }
 

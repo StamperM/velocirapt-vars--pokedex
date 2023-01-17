@@ -78,7 +78,7 @@ function displayList(items) {
   } else {
     const card = `
       <div class="container-fluid parent">
-        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";> 
+        <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow p-3 mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
           <h1 id="pokemon-name">${items[0].name} </h1>
               <div class="stats-wrapper h25">

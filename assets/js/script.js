@@ -5,6 +5,7 @@ function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     // fetch call
   
+  
     fetch(pokeApiCallTemplate)
         .then(function (response){
             return response.json();
@@ -16,6 +17,7 @@ function getAll151FetchCall(limit){
         // console.log(data.results);
         // console.log(data.results[8].name);
         })
+        
         
         };
 
@@ -37,10 +39,14 @@ function displayPokemonNames (data){
     showPokemonInfo(syncedUpDataArray);
     
     
+    
+    
 };
 
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
+ 
+ function showPokemonInfo(pokemonName) {
  
  function showPokemonInfo(pokemonName) {
   // console.log(pokemonName);
@@ -50,6 +56,7 @@ function displayPokemonNames (data){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
     // fetch call
     fetch(pokeApiCallTemplate)
+    .then(function (response){
     .then(function (response){
             return response.json();
         })
@@ -70,8 +77,9 @@ function displayList(items) {
   
   if (items.length == 0) {
     listOutput.innerHTML = " ";
-  } else if (items[0].id > 151) {
+  } else if (items.id > 151) {
     var card = ` `;
+    listOutput.innerHTML += card
     listOutput.innerHTML += card
   } else {
     const card = `
@@ -186,6 +194,7 @@ function displaySearchedPokemon(info) {
 
   pokemonOutput.innerHTML = card;
   
+  
 };
 
 // pulling the values for the left and right buttons
@@ -234,7 +243,18 @@ function addToTeam(){
         targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
         console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
+       
+        console.log(event.currentTarget + " event works")
+        targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
+        console.log(targetCardPhoto)
+        var footerDisplay =document.querySelector(".ul-team");
         var footerimage = document.createElement("IMG");
+        const mappy = targetCardPhoto.map(instance => {
+          
+          return `<div class="mapped-div parent">${instance.innerHTML}</div>`
+        })
+        footerDisplay.innerHTML = mappy
+        removeTeam(mappy)
         const mappy = targetCardPhoto.map(instance => {
           
           return `<div class="mapped-div parent">${instance.innerHTML}</div>`

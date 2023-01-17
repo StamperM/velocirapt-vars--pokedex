@@ -86,13 +86,14 @@ function displayList(items) {
           </div>
           <div id=${items[0].name}  class="hover-wrapper">
             <div class= "row rando-row">
-            <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
-            <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
-            <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
-            <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div>
-            <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div>
-            <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
+              <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
+              <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div></div>
+              <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div></div>
+              <div class="barContianer">Special-Attack:<div class="specialatk-div skill info-card-div" style="width:${items[0].stats[3].base_stat}%"> ${items[0].stats[3].base_stat}</div></div>
+              <div class="barContianer">Special-Defense:<div class="specialdef-div skill info-card-div" style="width:${items[0].stats[4].base_stat}%"> ${items[0].stats[4].base_stat}</div></div>
+              <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div></div>
             </div>
+            <button class="add-to-team-btn">Add to Team</button>
         </div>
       </div>
      `
@@ -102,10 +103,11 @@ function displayList(items) {
 
 // listening for the dropdown menu, selecting the dropdown items
 function useFilter () {
-const dropDown = document.querySelector('.dropdown-menu');
+const dropDown = document.querySelector('#fighting-type-dropdown');
 
 dropDown.addEventListener("click", function(event){
-  dropDownID = event.target.id;
+  console.log("hello");
+   var dropDownID = event.target.id;
   filteredData(dropDownID)
 })
 };
@@ -226,8 +228,7 @@ function leftPagination() {
 leftArrow.addEventListener("click", leftPagination);
 rightArrow.addEventListener("click", rightPagination);
 
-// on starting of the page, place in 20 pokemon to the call.
-getAll151FetchCall(20);
+
 
 
 
@@ -239,13 +240,18 @@ function addToTeam(){
     var listOutput = document.querySelector(".list-output");
     listOutput.addEventListener("click", function(event){
        
-        // console.log(event.target.innerHTML + " event works")
-        if (targetCardPhoto.length < 6) {
-          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement);
+        console.log(event.target.className + " event works")
+    if (event.target.className == "add-to-team-btn") {
+      if (targetCardPhoto.length < 6 ) {
+          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
         } else {
            console.log("can only have six pokemon to a team")
            return
         }
+      } else {
+  console.log("missed button")
+      }
+        
         
         // console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
@@ -273,8 +279,9 @@ function removeTeam (info) {
   
 }
 
-const addTeamBtn = document.querySelector(".add-team-btn")
-addTeamBtn.addEventListener('click', saveTeamToStorage)
+const addTeamBtn = document.querySelector(".add-team-btn");
+addTeamBtn.addEventListener('click', saveTeamToStorage);
+
 function saveTeamToStorage () {
   const dropDown = document.querySelector(".team-dropdown")
   let dropValue = dropDown.innerHTML
@@ -285,10 +292,30 @@ function saveTeamToStorage () {
   // console.log(footerDisplay.innerHTML)
 }
 
-function getFromStorage () {
+
+function getTeamList () {
+  const dropDown = document.querySelector(".team-button")
+  const setTeam = document.querySelectorAll('.new-dropdown-item')
+  setTeam.forEach(each => {
+    each.addEventListener('click', (event) => {
+      event.preventDefault();
+      let value = each.innerHTML
+      console.log(value)
+      dropDown.innerHTML = value
+      getFromStorage(value)
+    });
+    
+  });
+  
+}
+
+getTeamList();
+
+function getFromStorage (value) {
+  console.log(value);
   var footerDisplay = document.querySelector(".ul-team");
-  console.log(JSON.parse(localStorage.getItem("team")))
-  footerDisplay.innerHTML = JSON.parse(localStorage.getItem(`${dropValue}`))
+  console.log(JSON.parse(localStorage.getItem(`${value}`)));
+  footerDisplay.innerHTML = JSON.parse(localStorage.getItem(`${value}`))
 }
 
 
@@ -338,18 +365,6 @@ flatpickr("#date",{
 
 showBtn.addEventListener("click", showBattleFooter)
 useFilter();
-
-
-var teamButton = document.querySelector(".team 1");
-var footerElement = document.getElementsByClassName("panel-footer")
-
-teamButton.addEventListener("click", function(event){
-  var selectedTeam = event.target.id
-  console.log(selectedTeam);
-  footerElement.innterHTML = JSON.parse(localStorage.getItem(selectedTeam));
-});
-
-
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);

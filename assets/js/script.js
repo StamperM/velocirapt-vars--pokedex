@@ -13,9 +13,6 @@ function getAll151FetchCall(limit){
         .then(function (data){
         // plug in to display pokemon names with the data
         displayPokemonNames(data);
-        // console.log(data);
-        // console.log(data.results);
-        // console.log(data.results[8].name);
         })
         
         
@@ -24,8 +21,6 @@ function getAll151FetchCall(limit){
 // loops through all the 151 names given by getAll151FetchCall and iterates through them, plugging them
 // into the showPokemon info function
 function displayPokemonNames (data){
-    var pokemonDataArray = data.results;
-    var syncedUpDataArray = [];
     var pokemonDataArray = data.results;
     var syncedUpDataArray = [];
     // console.log(PokemonDataArray);
@@ -46,7 +41,7 @@ function displayPokemonNames (data){
 // function to plug in info and call for pokemon based off of names
 // plug in the pokemon name to get all the data for that pokemon
  
- function showPokemonInfo(pokemonName) {
+ 
  
  function showPokemonInfo(pokemonName) {
   // console.log(pokemonName);
@@ -56,7 +51,7 @@ function displayPokemonNames (data){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/${pokemonName[i]}`;
     // fetch call
     fetch(pokeApiCallTemplate)
-    .then(function (response){
+    
     .then(function (response){
             return response.json();
         })
@@ -64,8 +59,6 @@ function displayPokemonNames (data){
             let pokemonArray = [];
             pokemonArray.push(data);
             displayList(pokemonArray);
-            // console.log(pokemonArray[0].height);
-          //  useFilter(pokemonArray);
           })
     };
     
@@ -79,7 +72,6 @@ function displayList(items) {
     listOutput.innerHTML = " ";
   } else if (items.id > 151) {
     var card = ` `;
-    listOutput.innerHTML += card
     listOutput.innerHTML += card
   } else {
     const card = `
@@ -112,7 +104,6 @@ const dropDown = document.querySelector('.dropdown-menu');
 
 dropDown.addEventListener("click", function(event){
   dropDownID = event.target.id;
-  console.log(dropDownID);
   filteredData(dropDownID)
 })
 };
@@ -190,10 +181,9 @@ function displaySearchedPokemon(info) {
             </div>
         </div>
     </div>
-    `;
+    `
 
   pokemonOutput.innerHTML = card;
-  
   
 };
 
@@ -243,18 +233,8 @@ function addToTeam(){
         targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
         console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
-       
-        console.log(event.currentTarget + " event works")
-        targetCardPhoto.push(event.target.parentElement.parentElement.parentElement);
-        console.log(targetCardPhoto)
-        var footerDisplay =document.querySelector(".ul-team");
         var footerimage = document.createElement("IMG");
-        const mappy = targetCardPhoto.map(instance => {
-          
-          return `<div class="mapped-div parent">${instance.innerHTML}</div>`
-        })
-        footerDisplay.innerHTML = mappy
-        removeTeam(mappy)
+        
         const mappy = targetCardPhoto.map(instance => {
           
           return `<div class="mapped-div parent">${instance.innerHTML}</div>`

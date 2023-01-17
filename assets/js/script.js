@@ -79,7 +79,7 @@ function displayList(items) {
   } else {
     const card = `
 
-      <div class="container-fluid pokemon-card  parent">
+      <div class="container-fluid pokemon-card parent">
         <div id=${items[0].types[0].type.name} class="wrapper list-wrapper card shadow  mb-5 bg-body-tertiary rounded ";>   
           <div class="info-wrapper ">
             <h1 id="pokemon-name">${items[0].name} </h1>
@@ -265,6 +265,7 @@ rightArrow.addEventListener("click", rightPagination);
 
 // on starting of the page, place in 20 pokemon to the call.
 getAll151FetchCall(20);
+
 
 
 

@@ -100,7 +100,7 @@
   </header>
   <main>
     <!-- will use search and diplay pokemon that was searched for -->
-    <section class="searched-output-section">
+    
       <!-- <section
           class="searched-output-section d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
         > -->
@@ -120,18 +120,12 @@
         <button type="button" id="right-arrow" class="btn "><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <section class="list-output">
+        
+      </section>
 
 
   </main>
 
-            <div class="container">
-                
-        </div>
-        </section>
-          
-        </div>
-        
-      </section>
       <div class="panel fixed-bottom" data-show=false>
         <button class="shrink-grow-panel" >Show Team Menu</button>
         <div class="panel-body" >
@@ -141,7 +135,19 @@
           <ul class="ul-team">
 
           </ul>
-          <button type="button" class="btn btn-light clear-btn">Clear Team</button>
+          <div class="button-wrapper container w-100 text-center">
+            <button type="button" class="btn btn-light clear-btn">Clear Team</button>
+            <button type="button" class="btn btn-success add-team-btn">Save Team</button>
+            <button class="btn btn-secondary dropdown-toggle team-dropdown" type="button" id="dropdownMenuButton2"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Team #
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                  <li class="team-setter">Team 1</li>
+                  <li class="team-setter">Team 2</li>
+                  <li class="team-setter">Team 3</li>
+                </ul>
+          </div>
         </div>
         <input type="text" name="date" id="date" placeholder="Battle Date"/>
       </div>

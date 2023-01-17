@@ -53,7 +53,7 @@
                   <li><a class="dropdown-item" id="fire" href="#">Fire</a></li>
                   <li><a class="dropdown-item" id="water" href="#">Water</a></li>
                   <li><a class="dropdown-item" id="grass" href="#">Grass</a></li>
-                  <li><a class="dropdown-item  id="electric"  href="#">Electiric</a></li>
+                  <li><a class="dropdown-item" id="electric" href="#">Electiric</a></li>
                   <li><a class="dropdown-item" id="ice" href="#">Ice</a></li>
                   <li><a class="dropdown-item" id="fighting" href="#">Fighting</a></li>
                   <li><a class="dropdown-item" id="poison" href="#">Poison</a></li>
@@ -64,13 +64,11 @@
                   <li><a class="dropdown-item" id="rock" href="#">Rock</a></li>
                   <li><a class="dropdown-item" id="ghost" href="#">Ghost</a></li>
                   <li><a class="dropdown-item" id="dragon"href="#">Dragon</a></li>
-                  <li><a class="dropdown-item" id="dark"  href="#">Dark</a></li>
                   <li><a class="dropdown-item" id="ghost" href="#">Ghost</a></li>
-                  <li><a class="dropdown-item" id="steel" href="#">Steel</a></li>
                   <li><a class="dropdown-item" id="none" href="#">None</a></li>
                 </ul>
               </div>
-              <button class="btn btn-secondary" type="button">
+              <button id="team-button" class="btn btn-secondary" type="button">
                 Team
               </button>
             </div>
@@ -124,12 +122,16 @@
         </div>
         
       </section>
-      <div class="panel fixed-bottom">
-        <div class="panel-body" >
-         Battle Team
+      <div class="panel fixed-bottom" data-show=false>
+        <button class="shrink-grow-panel" >Show Team Menu</button>
+        
+        <div class="panel-footer bg-primary d-flex flex-column justify-content-center align-items-center p-2" >
+          <ul class="ul-team">
+
+          </ul>
+          <button type="button" class="btn btn-light clear-btn">Clear Team</button>
         </div>
-        <div class="panel-footer bg-primary d-flex align-items-center ml 5" style = "height: 50px ">
-          <button type="button" class="btn btn-light">Light</button></div>
+        
       </div>
     </main>
 

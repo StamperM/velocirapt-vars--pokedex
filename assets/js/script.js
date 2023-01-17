@@ -236,7 +236,7 @@ function addToTeam(){
     var listOutput = document.querySelector(".list-output");
     listOutput.addEventListener("click", function(event){
        
-        console.log(event.target.innerHTML + " event works")
+        // console.log(event.target.innerHTML + " event works")
         if (targetCardPhoto.length < 6) {
           targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement);
         } else {
@@ -244,7 +244,7 @@ function addToTeam(){
            return
         }
         
-        console.log(targetCardPhoto)
+        // console.log(targetCardPhoto)
         var footerDisplay =document.querySelector(".ul-team");
         var footerimage = document.createElement("IMG");
         
@@ -279,7 +279,7 @@ function saveTeamToStorage () {
   localStorage.setItem(`${dropValue}`, JSON.stringify(footerDisplay.innerHTML))
   footerDisplay.innerHTML = "Team Saved!"
   targetCardPhoto = []
-  console.log(footerDisplay.innerHTML)
+  // console.log(footerDisplay.innerHTML)
 }
 
 function getFromStorage () {

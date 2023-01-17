@@ -75,6 +75,7 @@ function displayList(items) {
   if (items.length == 0) {
     listOutput.innerHTML = " ";
   } else if (items[0].id > 151) {
+  } else if (items[0].id > 151) {
     var card = ` `;
     listOutput.innerHTML += card
   } else {
@@ -87,8 +88,8 @@ function displayList(items) {
               <img id= "pokemon-img" class="w-100" src="./assets/pokemon/${items[0].id}.png" alt=${items[0].name}/>
               </div>
           </div>
-            <div id=${items[0].name}  class="hover-wrapper">
-            <div class= "row">
+          <div id=${items[0].name}  class="hover-wrapper">
+            <div class= "row rando-row">
             <div class="barContianer">HP:<div class="hp-div skill info-card-div" style="width:${items[0].stats[0].base_stat}%">${items[0].stats[0].base_stat}</div></div>
             <div class="barContianer">Attack: <div class="attack-div skill info-card-div" style="width:${items[0].stats[1].base_stat}%"> ${items[0].stats[1].base_stat}</div>
             <div class="barContianer">Defense:<div class="defense-div skill info-card-div" style="width:${items[0].stats[2].base_stat}%"> ${items[0].stats[2].base_stat}</div>
@@ -97,6 +98,7 @@ function displayList(items) {
             <div class="barContianer">Speed: <div class="speed-div info-card-div skill" style="width:${items[0].stats[5].base_stat}%">${items[0].stats[5].base_stat}</div>
             </div>
         </div>
+      </div>
      `
     listOutput.innerHTML += card 
   };
@@ -242,8 +244,8 @@ function addToTeam(){
     listOutput.addEventListener("click", function(event){
        
         console.log(event.target.innerHTML + " event works")
-        if (targetCardPhoto.length < 6) {
-          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement);
+        if (targetCardPhoto.length < 6 ) {
+          targetCardPhoto.push(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
         } else {
            console.log("can only have six pokemon to a team")
            return
@@ -342,7 +344,8 @@ showBtn.addEventListener("click", showBattleFooter)
 useFilter();
 
 
-
+var teamButton = document.querySelector(".team-button");
+var footerElement = document.getElementsByClassName("panel-footer")
 
 teamButton.addEventListener("click", function(event){
   var selectedTeam = event.target.id

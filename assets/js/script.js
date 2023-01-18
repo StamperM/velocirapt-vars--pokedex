@@ -1,6 +1,9 @@
 // main fetch function that gets the name of all 151 pokemon only
 let offset = 0; 
 
+
+
+
 function getAll151FetchCall(limit){
     var pokeApiCallTemplate = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     // fetch call

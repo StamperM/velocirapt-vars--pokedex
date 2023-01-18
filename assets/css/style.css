@@ -1,34 +1,14 @@
-:root {
-    --pokeYellow: rgb(255, 222, 0);
-    --pokeRed: rgb(255, 0, 0);
-    --pokeDarkRed: rgb(204, 0, 0);
-    --pokeBlue: rgb(59, 76, 202);
-    --pokeGold: rgb(179, 161, 37);
-    --pokeBorder: -webkit-text-stroke: 2px black;
-}
-
-.add-btn {
-    background-color: var(--pokeRed);
-    color: var(--pokeYellow);
-    text-align: center;
-    font-size: 8px;
-
-}
-
 .grid-bg {
     background-color: whitesmoke;
     width: 90%;
     margin: auto;
     padding: 10px;
-
 }
 
 .list-output {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr; */
     margin: 10px;
     grid-gap: 0px 10px;
     background-color: whitesmoke;
@@ -37,14 +17,11 @@
 * {
     margin: 0;
     font-family: 'Oswald', sans-serif;
-
 }
-
 
 #pokemon-name {
     position: relative;
     text-align: center;
-    /* font-family: Montserrat; */
     font-weight: 900;
     font-size: 3vmin;
     border: solid;
@@ -56,7 +33,6 @@
 #pokemon-stats {
     position: relative;
     text-align: center;
-    /* font-family: Montserrat; */
     font-size: 4vmin;
 }
 
@@ -164,8 +140,7 @@
     border-bottom-right-radius: 15px;
 }
 
-li,
-.dropdown-item  {
+li, .dropdown-item  {
     background-color: rgb(50, 51, 49, .25);
     color: white;
 }
@@ -239,7 +214,12 @@ li,
     margin: auto
 }
 
+.ul-team .list-wrapper {
+    width: auto;
+    height: auto;
+    max-width: 250px;
+}
 
- .date-picked {
+.date-picked {
     color: white;
  }

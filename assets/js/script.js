@@ -288,14 +288,38 @@ addTeamBtn.addEventListener('click', saveTeamToStorage);
 
 function saveTeamToStorage () {
   const dropDown = document.querySelector(".team-dropdown")
+  const modal = document.querySelector('.modal')
+  const modalSpan = document.querySelector('.modal-span')
   let dropValue = dropDown.innerHTML
-  var footerDisplay =document.querySelector(".ul-team");
+  var footerDisplay =document.querySelector(".panel-footer");
+  const modalList = document.querySelector('.modal-list')
+  let dateDisplay = document.querySelector("#date")
+  const pTag = document.querySelector(".date-picked")
+  let selectedDate = dateDisplay.value
+  console.log(dateDisplay.value)
+  pTag.innerHTML = "Battle Date: " + selectedDate
   localStorage.setItem(`${dropValue}`, JSON.stringify(footerDisplay.innerHTML))
   footerDisplay.innerHTML = "Team Saved!"
   targetCardPhoto = []
+  modal.classList.add('active')
+  modalList.innerHTML = JSON.parse(localStorage.getItem(`${dropValue}`))
+  showModalInfo()
   // console.log(footerDisplay.innerHTML)
-}
+} 
 
+
+
+const closeBtn = document.querySelector('.close-btn')
+const modal = document.querySelector('.modal')
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove('active')
+})
+
+function showModalInfo () {
+  const date = document.querySelector('#date')
+  const modalSpan = document.querySelector('.modal-span')
+  modalSpan.innerHTML = date.value
+}
 
 function getTeamList () {
   const dropDown = document.querySelector(".team-button")
@@ -317,9 +341,16 @@ getTeamList();
 
 function getFromStorage (value) {
   console.log(value);
-  var footerDisplay = document.querySelector(".ul-team");
+  var footerDisplay = document.querySelector(".panel-footer");
+  let dateDisplay = document.querySelector("#date")
+  const pTag = document.querySelector(".date-picked")
+  let selectedDate = dateDisplay.value
+  console.log(dateDisplay.value)
+  pTag.innerHTML = "Date picked: " + selectedDate
   console.log(JSON.parse(localStorage.getItem(`${value}`)));
   footerDisplay.innerHTML = JSON.parse(localStorage.getItem(`${value}`))
+  dateDisplay.placeholder = selectedDate
+  console.log(dateDisplay.placeholder)
 }
 
 

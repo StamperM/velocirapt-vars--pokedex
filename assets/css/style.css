@@ -205,3 +205,33 @@ li,
 .panel[data-show= "true"] {
     transform: translateY(0%);
  }
+
+ .modal {
+    display: none;
+ }
+ .modal.active {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 85%;
+    height: 565px;
+    transform: translate(8.8%, 0%);
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(248,249,250);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 25px 0px black;
+ }
+ .modal-list  {
+    display: flex;
+    flex-wrap: wrap;
+
+ }
+ .modal-list .parent  {
+   width: 265px;
+
+ }
+ .date-picked {
+    color: white;
+ }

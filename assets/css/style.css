@@ -15,7 +15,7 @@
 
 }
 
-section .list-output {
+.grid-bg {
     background-color: whitesmoke;
     width: 90%;
     margin: auto;
@@ -232,6 +232,14 @@ li,
    width: 265px;
 
  }
+
+#fetched-pokemon {
+    width: 250px;
+    height: auto;
+    margin: auto
+}
+
+
  .date-picked {
     color: white;
  }
